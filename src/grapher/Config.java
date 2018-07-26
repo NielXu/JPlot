@@ -16,6 +16,12 @@ public class Config {
 	/**The title of the window, cannot be modified**/
 	public final String TITLE = "Grapher v0.1 test";
 	
+	/**The x-axis of the graph window, default is -1, which means the center of the screen, can be modified**/
+	public int graph_location_x = -1;
+	
+	/**The y-axis of the graph window, default is -1, which means the center of the screen, can be modified**/
+	public int graph_location_y = -1;
+	
 	/**The size of the Panel(not window) by default, can be modified.
 	 * The size is width and height, the Panel must be a square**/
 	public int size = 600;
@@ -58,5 +64,8 @@ public class Config {
 	
 	/**Showing units on the panel by default, can be modified**/
 	public boolean show_unit = true;
+	
+	/**Not linking points on the graph by default, can be modified**/
+	public boolean link_points = false;
 
 }

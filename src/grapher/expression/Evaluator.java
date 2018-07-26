@@ -10,6 +10,8 @@ import java.util.Stack;
  *
  */
 public class Evaluator {
+	
+	private Evaluator() {}
 
 	/**
 	 * Do the calculation and return the double as the result. <b>The operators in the expression cannot be omitted,

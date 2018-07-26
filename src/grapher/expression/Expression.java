@@ -73,7 +73,7 @@ public class Expression {
 				Point p = new Point();
 				float x = min + i * step;
 				p.x = x;
-				p.y = (float) Evaluator.evaluate(exp.replace("x", "("+String.valueOf(x)+")"));
+				p.y = Evaluator.evaluate(exp.replace("x", "("+String.valueOf(x)+")"));
 				pts[i] = p;
 			}
 		}

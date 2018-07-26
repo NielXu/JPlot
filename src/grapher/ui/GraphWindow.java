@@ -39,6 +39,7 @@ public class GraphWindow{
 	public GraphWindow(Config config){
 		frame = new JFrame(config.TITLE);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setResizable(false);
 		expressions = new ArrayList<Expression>();
 		points = new ArrayList<Point>();
 		this.config = config;
@@ -73,7 +74,8 @@ public class GraphWindow{
 		panel = new GraphPanel(points, expressions, config);
 		frame.add(panel);
 		frame.pack();
-		frame.setLocationRelativeTo(null);
+		if(config.graph_location_x == -1 && config.graph_location_y == -1) frame.setLocationRelativeTo(null);
+		else frame.setLocation(config.graph_location_x, config.graph_location_y);
 		frame.setVisible(true);
 	}
 	

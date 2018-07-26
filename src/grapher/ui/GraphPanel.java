@@ -81,13 +81,17 @@ class GraphPanel extends JPanel{
 	private void render_points(Graphics g){
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setColor(config.point_color);
+		Path2D path = new Path2D.Float();
 		for(int i=0;i<points.size();i++){
 			Point p = points.get(i);
 			Rectangle2D rect = new Rectangle2D.Float();
 			double[] trans = translate(p.x, p.y);
 			rect.setRect(trans[0]-2, trans[1]-2, 4, 4);
 			g2d.fill(rect);
+			if(i==0) path.moveTo(trans[0], trans[1]);
+			else path.lineTo(trans[0], trans[1]);
 		}
+		if(config.link_points) g2d.draw(path);
 	}
 	
 	// Draw functions on the panel
