@@ -56,6 +56,9 @@ public class Config {
 	/**The point color by default, can be modified**/
 	public Color point_color = Color.YELLOW;
 	
+	/**The color of the numbers on axises, can be modified**/
+	public Color number_color = Color.CYAN;
+	
 	/**Showing grid on the panel by default, can be modified**/
 	public boolean show_grid = true;
 	
@@ -64,6 +67,11 @@ public class Config {
 	
 	/**Showing units on the panel by default, can be modified**/
 	public boolean show_unit = true;
+	
+	/**Not showing numbers on axises by default, can be modified
+	 * Numbers on the axies might not be properly rendered in some cases, especially when
+	 * the there are two many units in a small window and the numbers will overlap each other**/
+	public boolean show_numbers = false;
 	
 	/**Not linking points on the graph by default, can be modified**/
 	public boolean link_points = false;

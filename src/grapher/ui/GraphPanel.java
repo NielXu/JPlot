@@ -71,6 +71,8 @@ class GraphPanel extends JPanel{
 		g.fillRect(0, 0, config.size, config.size);
 		// Rendering axis
 		render_layouts(g);
+		// Render numbers
+		render_numbers(g);
 		// Render functions
 		render_functions(g);
 		// Render points
@@ -120,6 +122,20 @@ class GraphPanel extends JPanel{
 		return new double[]{x*ratio, -y*ratio};
 	}
 	
+	// Draw numbers on axises
+	private void render_numbers(Graphics g) {
+		if(config.show_numbers) {
+			g.setColor(config.number_color);
+			for(int i=0;i<unit;i++) {
+				if(config.min_unit + i == 0) {g.drawString(String.valueOf(config.min_unit+i), i*ratio, origin_y);}
+				else{
+					g.drawString(String.valueOf(config.min_unit+i), i*ratio, origin_y);
+					g.drawString(String.valueOf(config.min_unit+i), origin_x-2, i*ratio-2);
+				}
+			}
+		}
+	}
+	
 	// Draw axis on the panel
 	private void render_layouts(Graphics g){
 		// Draw grids
@@ -146,8 +162,6 @@ class GraphPanel extends JPanel{
 			g.setColor(config.unit_color);
 			for(int i=0;i<unit;i++){
 				g.fillRect(i*ratio-2, origin_y-2, 4, 4);
-			}
-			for(int i=0;i<unit;i++){
 				g.fillRect(origin_x-2, i*ratio-2, 4, 4);
 			}
 		}
