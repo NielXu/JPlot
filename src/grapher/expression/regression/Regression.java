@@ -11,7 +11,7 @@ package grapher.expression.regression;
 public class Regression {
 
 	public Regression() {
-		
+		// TODO
 	}
 	
 }

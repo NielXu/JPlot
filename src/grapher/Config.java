@@ -59,6 +59,9 @@ public class Config {
 	/**The color of the numbers on axises, can be modified**/
 	public Color number_color = Color.CYAN;
 	
+	/**The color of the cursor location font, can be modified**/
+	public Color cursorlocation_color = Color.PINK;
+	
 	/**Showing grid on the panel by default, can be modified**/
 	public boolean show_grid = true;
 	
