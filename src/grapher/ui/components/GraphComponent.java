@@ -42,13 +42,23 @@ public abstract class GraphComponent {
 	}
 	
 	/**
-	 * Translate values to x,y values on graph
+	 * Translate x,y values in axis to pixels
 	 * @param x x value
 	 * @param y y value
-	 * @return An array that contains {x,y}
+	 * @return An array that contains {x,y} in pixels
 	 */
 	protected final double[] translate(double x, double y){
 		return new double[]{x*ratio, -y*ratio};
+	}
+	
+	/**
+	 * Translate pixels to x,y values in axis
+	 * @param x x value
+	 * @param y y value
+	 * @return An array that contains {x,y} in axis
+	 */
+	protected final double[] re_translate(double x, double y) {
+		return new double[] {x/ratio + config.min_unit, -y/ratio + config.max_unit};
 	}
 	
 	/**

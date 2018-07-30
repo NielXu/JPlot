@@ -12,7 +12,6 @@ import grapher.util.Point;
 
 /**
  * The point component reponsible for rendering points and lines that link them together.
- * It is usually on the top most layer.
  * @author Daniel Xu
  *
  */

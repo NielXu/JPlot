@@ -1,6 +1,7 @@
 package grapher;
 
 import java.awt.Color;
+import java.text.DecimalFormat;
 
 /**
  * The Configutaion of the grapher. Each grapher has one unique
@@ -78,5 +79,12 @@ public class Config {
 	
 	/**Not linking points on the graph by default, can be modified**/
 	public boolean link_points = false;
-
+	
+	/**Not showing cursor location by default, enable this will show cursor location on the top
+	 * left corner on the jframe and also a small rectangle will be rendered at cursor location**/
+	public boolean show_cursorxy = true;
+	
+	/**The DecimalFormat that will be apply to cursorlocation x,y values. However, show_cursorxy need to be
+	 * enabled first in order to apply this configuration**/
+	public DecimalFormat cursorlocation_decimal = new DecimalFormat("#0.00");
 }

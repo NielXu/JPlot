@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import grapher.Config;
 import grapher.expression.Expression;
 import grapher.ui.components.*;
+import grapher.ui.components.listener.MotionListener;
 import grapher.util.Point;
 
 /**
@@ -43,6 +44,10 @@ public class GraphPanel extends JPanel{
 		components.add(new AxisNumbersComponent(config));
 		components.add(new FunctionComponent(config).add_exp(expressions));
 		components.add(new PointComponent(config).add_pts(points));
+		// Cursor component is special since it requires motion listener
+		CursorComponent cursorCompo = new CursorComponent(config);
+		addMouseMotionListener(new MotionListener(this, cursorCompo));
+		components.add(cursorCompo);
 	}
 	
 	@Override
