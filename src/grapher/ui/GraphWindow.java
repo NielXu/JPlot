@@ -1,5 +1,6 @@
 package grapher.ui;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,9 @@ import grapher.util.Point;
  */
 public class GraphWindow{
 
+	/**The image that saves Graphics**/
+	private BufferedImage img;
+	
 	/**Jframe window**/
 	private JFrame frame;
 	
@@ -77,6 +81,18 @@ public class GraphWindow{
 		if(config.graph_location_x == -1 && config.graph_location_y == -1) frame.setLocationRelativeTo(null);
 		else frame.setLocation(config.graph_location_x, config.graph_location_y);
 		frame.setVisible(true);
+	}
+	
+	/**
+	 * Get the image that saves everything painted on the graph
+	 * @return Image
+	 */
+	public BufferedImage get_img() {
+		if(img == null) {
+			img = new BufferedImage(config.size, config.size, BufferedImage.TYPE_INT_RGB);
+			panel.paint(img.createGraphics());
+		}
+		return img;
 	}
 	
 }

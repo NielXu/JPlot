@@ -82,7 +82,7 @@ public class Config {
 	
 	/**Not showing cursor location by default, enable this will show cursor location on the top
 	 * left corner on the jframe and also a small rectangle will be rendered at cursor location**/
-	public boolean show_cursorxy = true;
+	public boolean show_cursorxy = false;
 	
 	/**The DecimalFormat that will be apply to cursorlocation x,y values. However, show_cursorxy need to be
 	 * enabled first in order to apply this configuration**/

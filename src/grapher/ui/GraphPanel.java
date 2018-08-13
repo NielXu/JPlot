@@ -9,7 +9,12 @@ import javax.swing.JPanel;
 
 import grapher.Config;
 import grapher.expression.Expression;
-import grapher.ui.components.*;
+import grapher.ui.components.AxisNumbersComponent;
+import grapher.ui.components.CursorComponent;
+import grapher.ui.components.FunctionComponent;
+import grapher.ui.components.GraphComponent;
+import grapher.ui.components.LayoutComponent;
+import grapher.ui.components.PointComponent;
 import grapher.ui.components.listener.MotionListener;
 import grapher.util.Point;
 

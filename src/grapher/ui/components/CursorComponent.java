@@ -26,7 +26,6 @@ public class CursorComponent extends GraphComponent{
 			g.setColor(config.cursorlocation_color);
 			g.fillRect(cursor_x-2, cursor_y-2, 4, 4);
 			double[] trans = super.re_translate(cursor_x, cursor_y);
-			System.out.println(config.cursorlocation_decimal.format(trans[0])+"  "+config.cursorlocation_decimal.format(trans[1]));
 			g.drawString("x = "+config.cursorlocation_decimal.format(trans[0]), 5, 15);
 			g.drawString("y = "+config.cursorlocation_decimal.format(trans[1]), 5, 28);
 		}

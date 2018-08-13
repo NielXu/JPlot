@@ -53,6 +53,7 @@ public class Demo {
 			ps[i] = pt;
 		}
 		Config c2 = new Config();
+		c2.show_cursorxy = true;
 		c2.point_color = Color.CYAN;
 		c2.link_points = true;
 		c2.size = 400;
@@ -61,14 +62,6 @@ public class Demo {
 		Grapher g2 = new Grapher(c2);
 		g2.add_pts(ps);
 		g2.show();
-		
-		// Test
-		Config con = new Config();
-		con.min_unit = -5;
-		con.max_unit = 10;
-		Grapher test = new Grapher(con);
-		test.add_exp(new Expression("2*x"));
-		test.show();
 	}
 	
 }
