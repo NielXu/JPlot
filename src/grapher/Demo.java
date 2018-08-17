@@ -11,15 +11,14 @@ public class Demo {
 	public static void main(String[] args){
 		Grapher g = new Grapher();
 		// Add two functions on graph
-		g.add_exp(new Expression("x^(1/2)"));
-		g.add_exp(new Expression("x+2"));
+		g.add_exp(new Expression("x^(1/2)", Color.YELLOW));
+		g.add_exp(new Expression("x+2", Color.RED));
 		// Must call show() to show up the graph
 		g.show();
 		
 		// Setup your own configuration
 		Config c = new Config();
 		// Adjust colors, units and so on
-		c.func_color = Color.YELLOW;
 		c.show_grid = false;
 		c.max_unit = 100;
 		c.min_unit = -100;
@@ -34,14 +33,18 @@ public class Demo {
 		custom_grapher.show();
 		
 		// Example of drawing points
-		// Randomizer providing 20 random points
+		// Randomizer providing some random points
 		Point[] p = Randomizer.point_randarray(-10, 10, -10, 10, 20);
+		Point[] p2 = Randomizer.point_randarray(-10, 10, -10, 10, 20);
+		Point[] p3 = Randomizer.point_randarray(-10, 10, -10, 10, 20);
 		Config config = new Config();
-		config.size = 300;
+		config.size = 500;
 		config.graph_location_x = 1300;
 		config.graph_location_y = 0;
 		Grapher pg = new Grapher(config);
-		pg.add_pts(p);
+		pg.add_pts(p, Color.GREEN);
+		pg.add_pts(p2, Color.RED);
+		pg.add_pts(p3, Color.ORANGE);
 		pg.show();
 		
 		// Linking points together

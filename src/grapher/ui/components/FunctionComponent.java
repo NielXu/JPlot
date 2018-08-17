@@ -49,6 +49,7 @@ public class FunctionComponent extends GraphComponent{
 				if(j==0) path.moveTo(trans[0], trans[1]);
 				else path.lineTo(trans[0], trans[1]);
 			}
+			g2d.setColor(exp.getColor());
 			g2d.draw(path);
 		}
 		// Remember to reset origin back to normal

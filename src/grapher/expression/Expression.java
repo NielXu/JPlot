@@ -1,5 +1,6 @@
 package grapher.expression;
 
+import java.awt.Color;
 import java.util.Stack;
 
 import grapher.Config;
@@ -21,6 +22,9 @@ public class Expression {
 	/**Configuration**/
 	private Config config;
 	
+	/**Function color**/
+	private Color func_color;
+	
 	/**
 	 * Setup the expression by providing it in string format. The expression has some
 	 * restrictions(see {@link grapher.expression.Evaluator#evaluate(String)}) and must follow the following rules:
@@ -32,8 +36,25 @@ public class Expression {
 	 * @param exp The expression in string format.
 	 */
 	public Expression(String exp){
+		this.exp = exp;
+	}
+	
+	/**
+	 * Setup the expression by providing it in string format. And can also customize the functoin color.
+	 * The expression has some restrictions(see {@link grapher.expression.Evaluator#evaluate(String)})
+	 * and must follow the following rules:
+	 * <ul>
+	 * <li>Only one variable allow at this time, and it should only be 'x', does not support other letters</li>
+	 * <li>No 'y=...' needed</li>
+	 * </ul>
+	 * Examples of valid expressions: '2+x', '3*x', '2^x'
+	 * @param exp The expression in string format.
+	 * @param func_color The color of the function. Will override the global Config.func_color
+	 */
+	public Expression(String exp, Color color) {
 		check(exp);
 		this.exp = exp;
+		this.func_color = color;
 	}
 	
 	/**
@@ -43,6 +64,17 @@ public class Expression {
 	 */
 	public void applyConfig(Config config){
 		this.config = config;
+	}
+	
+	/**
+	 * Get the color of the function
+	 * @return Color
+	 */
+	public Color getColor() {
+		if(func_color == null){
+			return config.func_color;
+		}
+		return func_color;
 	}
 	
 	/**

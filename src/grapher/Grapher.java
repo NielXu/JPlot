@@ -1,5 +1,6 @@
 package grapher;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -55,6 +56,17 @@ public class Grapher {
 	 */
 	public void add_pts(Point[] points){
 		graph.buffer_pts(points);
+	}
+	
+	/**
+	 * Add points on the graph with custom color. The points will be discrete and
+	 * will not be connected together. However, regression is
+	 * available with proper configuration.{@link grapher.Config}
+	 * @param points The array that contains points on the graph {@link grapher.util.Point}
+	 * @param c Color of the points
+	 */
+	public void add_pts(Point[] points, Color c){
+		graph.buffer_pts(points, c);
 	}
 	
 	/**

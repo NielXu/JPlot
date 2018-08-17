@@ -1,5 +1,6 @@
 package grapher.ui;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import javax.swing.JFrame;
 
 import grapher.Config;
 import grapher.expression.Expression;
+import grapher.util.Buffer;
 import grapher.util.Point;
 
 /**
@@ -30,7 +32,7 @@ public class GraphWindow{
 	/**List of expressions**/
 	private List<Expression> expressions;
 	/**List of points**/
-	private List<Point> points;
+	private List<Buffer> points;
 	
 	/**Configuration**/
 	private Config config;
@@ -45,7 +47,7 @@ public class GraphWindow{
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setResizable(false);
 		expressions = new ArrayList<Expression>();
-		points = new ArrayList<Point>();
+		points = new ArrayList<Buffer>();
 		this.config = config;
 	}
 	
@@ -66,9 +68,18 @@ public class GraphWindow{
 	 * @param points Array of points
 	 */
 	public void buffer_pts(Point[] points){
-		for(Point p : points){
-			this.points.add(p);
-		}
+		this.points.add(new Buffer(points, config, null));
+	}
+	
+	/**
+	 * Buffer the points, store points in the List and draw
+	 * on the graph when all the points had been added. Can
+	 * also customize the point color
+	 * @param points Array of points
+	 * @param c The color of the points
+	 */
+	public void buffer_pts(Point[] points, Color c){
+		this.points.add(new Buffer(points, config, c));
 	}
 	
 	/**

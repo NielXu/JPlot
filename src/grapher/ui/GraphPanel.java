@@ -16,7 +16,7 @@ import grapher.ui.components.GraphComponent;
 import grapher.ui.components.LayoutComponent;
 import grapher.ui.components.PointComponent;
 import grapher.ui.components.listener.MotionListener;
-import grapher.util.Point;
+import grapher.util.Buffer;
 
 /**
  * The GraphPanel is the JPanel that responsible for rendering
@@ -40,7 +40,7 @@ public class GraphPanel extends JPanel{
 	 * @param expressions The funtions that rendered on screen
 	 * @param config Configuration
 	 */
-	public GraphPanel(List<Point> points, List<Expression> expressions, Config config){
+	public GraphPanel(List<Buffer> points, List<Expression> expressions, Config config){
 		super();
 		setPreferredSize(new Dimension(config.size, config.size));
 		this.config = config;

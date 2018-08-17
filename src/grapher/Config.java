@@ -39,7 +39,7 @@ public class Config {
 	 * The recommend value is 10 and it can be modified**/
 	public int density = 10;
 	
-	/**The color of the function by default, can be modified**/
+	/**The default function color on the graph, if no specific color is given in Expression, grapher will use this color**/
 	public Color func_color = Color.BLUE;
 	
 	/**The background color of the grapher by default, can be modified**/

@@ -6,7 +6,7 @@ import java.util.List;
 
 import grapher.Config;
 import grapher.expression.Expression;
-import grapher.util.Point;
+import grapher.util.Buffer;
 
 /**
  * GraphComponent is the abstract parent class that every components should extends. It includes some
@@ -88,7 +88,7 @@ public abstract class GraphComponent {
 	 * @param l List of points
 	 * @return Return the instance itself
 	 */
-	public GraphComponent add_pts(List<Point> l) {
+	public GraphComponent add_pts(List<Buffer> l) {
 		return this;
 	}
 	
