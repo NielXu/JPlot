@@ -26,6 +26,7 @@ public class Demo {
 		c.size = 400;
 		c.graph_location_x = 0;
 		c.graph_location_y = 0;
+		c.func_color = Color.YELLOW;
 		// Apply configuration to the grapher
 		Grapher custom_grapher = new Grapher(c);
 		custom_grapher.add_exp(new Expression("(x/2)*sin(x)"));

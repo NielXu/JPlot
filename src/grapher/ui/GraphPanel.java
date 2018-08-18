@@ -28,9 +28,6 @@ public class GraphPanel extends JPanel{
 	/**The compoennts on the graph**/
 	private List<GraphComponent> components;
 	
-	/**Default serial id**/
-	private static final long serialVersionUID = 1L;
-	
 	/**Configuration**/
 	private Config config;
 

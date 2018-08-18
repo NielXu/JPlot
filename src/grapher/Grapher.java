@@ -79,7 +79,7 @@ public class Grapher {
 	public void save_img(String name, String dir, String type) {
 		BufferedImage img = graph.get_img();
 		try{
-			File f = new File(dir + name + "." + type);
+			File f = new File(dir + "\\" + name + "." + type);
 			f.createNewFile();
 			ImageIO.write(img, type, f);
 		} 

@@ -1,7 +1,6 @@
 package grapher.ui.components;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.util.List;
 
 import grapher.Config;
@@ -68,7 +67,6 @@ public abstract class GraphComponent {
 	 * @param g The graphics object
 	 */
 	protected final void transform_to_origin(Graphics g) {
-		g = (Graphics2D)g;
 		g.translate(origin_x, origin_y);
 	}
 	
