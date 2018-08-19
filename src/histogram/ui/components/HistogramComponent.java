@@ -1,8 +1,13 @@
 package histogram.ui.components;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import histogram.Config;
+import histogram.Section;
 
 /**
  * HistogramComponent should be implemented by all components that added
@@ -16,8 +21,67 @@ public abstract class HistogramComponent {
 	/**Configuration**/
 	protected Config config;
 	
+	/**x,y units**/
+	protected double[] xunit, yunit;
+	
+	/**Scale of the graph**/
+	protected double xscale, yscale;
+	
+	/**Starting point of the graph, ending point of x axis and ending point of y axis**/
+	protected int[] starting, end_x, end_y;
+	
 	public HistogramComponent(Config config) {
 		this.config = config;
+		init();
+	}
+	
+	// Initialize some important variables
+	private void init() {
+		xunit = new double[config.x_unit];
+		yunit = new double[config.y_unit];
+		int xrange = (config.width - 75) - 100;
+		int yrange = (config.height - 100 - 100);
+		xscale = xrange / xunit.length;
+		yscale = yrange / yunit.length;
+		for(int i=0;i<xunit.length;i++) {
+			xunit[i] = 100 + i*xscale;
+		}
+		for(int i=0;i<yunit.length;i++) {
+			yunit[i] = 100 + i*yscale;
+		}
+		starting = new int[] {100, config.height-100};
+		end_x = new int[] {config.width - 75, config.height-100};
+		end_y = new int[] {100, 100};
+	}
+	
+	/**
+	 * Add sections to the component
+	 * @param section Section {@link histogram.Section}
+	 * @return HistogramComponent instance itself
+	 */
+	public HistogramComponent addSection(Section[] section) {
+		return this;
+	}
+	
+	/**
+	 * Render text at the center of rectangle
+	 * @param g Graphics object
+	 * @param rect THe rectangle
+	 * @param font Text font
+	 * @param text Text
+	 * @param c Color of the text
+	 */
+	protected void renderlabel(Graphics g, Rectangle rect, Font font, String text, Color c) {
+	    // Get the FontMetrics
+	    FontMetrics metrics = g.getFontMetrics(font);
+	    // Determine the X coordinate for the text
+	    int x = rect.x + (rect.width - metrics.stringWidth(text)) / 2;
+	    // Determine the Y coordinate for the text (note we add the ascent, as in java 2d 0 is top of the screen)
+	    int y = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
+	    // Draw the String
+	    g.setFont(font);
+	    g.setColor(c);
+	    g.drawString(text, x, y);
 	}
 	
 	/**
@@ -25,31 +89,4 @@ public abstract class HistogramComponent {
 	 * @param g Graphics g
 	 */
 	public abstract void render(Graphics g);
-	
-	/**
-	 * Get the starting point's x axis and y axis in an array.
-	 * The axis value is in pixel format 
-	 * @return array that contains x,y axis of start point
-	 */
-	protected int[] starting() {
-		return new int[] {100, config.height-100};
-	}
-	
-	/**
-	 * Get the ending point's axis of x axis in an array
-	 * The axis value is in pixel format 
-	 * @return array that contains x,y axis of the x axis
-	 */
-	protected int[] end_x() {
-		return new int[] {config.width - 75, config.height-100};
-	}
-	
-	/**
-	 * Get the ending point's axis of y axis in an array
-	 * The axis value is in pixel format 
-	 * @return array that contains x,y axis of the y axis
-	 */
-	protected int[] end_y() {
-		return new int[] {100, 100};
-	}
 }

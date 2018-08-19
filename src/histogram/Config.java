@@ -2,6 +2,7 @@ package histogram;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.DecimalFormat;
 
 /**
  * The configuration of the histogram. Similar to Grapher.Config, this
@@ -12,6 +13,15 @@ import java.awt.Font;
  *
  */
 public class Config {
+	
+	/**The string array that represents the x unit on the x axis
+	 * the length of the array should be equal to x_max - x_min**/
+	public String[] xunit = new String[] {"2001", "2002", "2003", "2004", "2005"};
+	
+	/**The string array that represents the y unit on the y axis,
+	 * the length of the array should be equal to y_max - y_min.
+	 * <b>The difference between each two numbers should be the same</b>**/
+	public double[] yunit = new double[] {10, 20, 30, 40, 50};
 	
 	/**The x-axis of the graph window, default is -1, which means the center of the screen, can be modified**/
 	public int graph_location_x = -1;
@@ -25,27 +35,11 @@ public class Config {
 	/**The height of the graph**/
 	public int height = 600;
 	
-	/**The min unit on x axis of the histogram**/
-	public int x_min = 0;
+	/**How many units on the x axis**/
+	public int x_unit = 5;
 	
-	/**The max unit on x axis of the histogram**/
-	public int x_max = 5;
-	
-	/**The step of the x axis, step means how many unit between x_max and x_min,
-	 * for instance. x_max = 5, x_min = 0, x_step = 1 will create a histogram
-	 * with x axis: 0, 1, 2, 3, 4, 5**/
-	public int x_step = 5;
-	
-	/**The min unit on y axis of the histogram**/
-	public int y_min = 0;
-	
-	/**The max unit on y axis of the histogram**/
-	public int y_max = 5;
-
-	/**The step of the y axis, step means how many unit between y_max and y_min,
-	 * for instance. y_max = 5, y_min = 0, y_step = 1 will create a histogram
-	 * with y axis: 0, 1, 2, 3, 4, 5**/
-	public int y_step = 5;
+	/**how many units on the y axis**/
+	public int y_unit = 5;
 	
 	/**The title of the window, this is different from title and cannot be modified**/
 	public final String TITLE = "Grapher v0.1";
@@ -77,6 +71,18 @@ public class Config {
 	/**The color of the xlabel**/
 	public Color xlabel_color = Color.BLACK;
 	
+	/**The color of the bar**/
+	public Color bar_color = Color.BLUE;
+	
+	/**The color of the xunit**/
+	public Color xunit_color = Color.BLACK;
+	
+	/**The color of the yunit**/
+	public Color yunit_color = Color.BLACK;
+	
+	/**The color of the bar number**/
+	public Color barnumber_color = Color.BLACK;
+	
 	/**The font that used by histogram title, cannot be modified for now**/
 	public final Font title_font = new Font("Helvetica", Font.BOLD, 18);
 	
@@ -86,6 +92,34 @@ public class Config {
 	/**The font that used by histogram ylabel, cannot be modified for now**/
 	public final Font ylabel_font = new Font("Helvetica", Font.BOLD, 18);
 	
-	/**Show grid on the histogram**/
-	public boolean show_grid = true;
+	/**The font that used by histogram xunit label, cannot be modified for now**/
+	public final Font xunit_font = new Font("Helvetica", Font.BOLD, 12);
+	
+	/**The font that used by histogram yunit label, cannot be modified for now**/
+	public final Font yunit_font = new Font("Helvetica", Font.BOLD, 12);
+	
+	/**The font that used by bar number, cannot be modified for now**/
+	public final Font barnumber_font = new Font("Helvetica", Font.BOLD, 12);
+	
+	/**Show vertical grid on xaxis**/
+	public boolean show_xgrid = true;
+	
+	/**Show horizontal grid on yaxis**/
+	public boolean show_ygrid = true;
+	
+	/**Show the labels on axis**/
+	public boolean show_units_label = true;
+	
+	/**Show the border of the vertical bar on histogram**/
+	public boolean show_border = true;
+	
+	/**Show number on top of each bar**/
+	public boolean show_bar_number = true;
+	
+	/**Show category on the top right corner**/
+	public boolean show_category = true;
+	
+	/**Decimal Format of numbers on bar**/
+	public DecimalFormat barnumber_decimal = new DecimalFormat("#0.00");
+	
 }

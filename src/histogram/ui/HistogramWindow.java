@@ -3,6 +3,7 @@ package histogram.ui;
 import javax.swing.JFrame;
 
 import histogram.Config;
+import histogram.Section;
 
 /**
  * Provide window for histogram, the window is not resizable once
@@ -22,6 +23,12 @@ public class HistogramWindow {
 	/**The Jpanel that contains the graph**/
 	private HistogramPanel histogrampanel;
 	
+	/**index of vertical bar**/
+	private int index;
+	
+	/**Array that contains all the vertical bars**/
+	private Section[] sections;
+	
 	/**
 	 * Construct histogram window and apply configuration
 	 * @param config Configuration
@@ -31,13 +38,26 @@ public class HistogramWindow {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setResizable(false);
 		this.config = config;
+		index = 0;
+		sections = new Section[config.x_unit];	// sttaic length, for future exception mangement
+	}	
+	
+	/**
+	 * Add a vertical bar to the histogram. Please notice
+	 * the amount of bars since it cannot be greater than number
+	 * of x units
+	 * @param b Vertical bar
+	 */
+	public void addSection(Section s) {
+		sections[index] = s;
+		index ++;
 	}
 	
 	/**
 	 * Show up the histogram on window, default is invisible
 	 */
 	public void show() {
-		histogrampanel = new HistogramPanel(config);
+		histogrampanel = new HistogramPanel(config, sections);
 		frame.add(histogrampanel);
 		frame.pack();
 		if(config.graph_location_x == -1 && config.graph_location_y == -1) frame.setLocationRelativeTo(null);

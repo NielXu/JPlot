@@ -8,8 +8,10 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import histogram.Config;
+import histogram.Section;
 import histogram.ui.components.HistogramComponent;
 import histogram.ui.components.LayoutComponent;
+import histogram.ui.components.SectionComponent;
 
 public class HistogramPanel extends JPanel{
 
@@ -19,12 +21,13 @@ public class HistogramPanel extends JPanel{
 	/**Components**/
 	private List<HistogramComponent> components;
 	
-	public HistogramPanel(Config config) {
+	public HistogramPanel(Config config, Section[] sections) {
 		super();
 		setPreferredSize(new Dimension(config.width, config.height));
 		this.config = config;
 		components = new ArrayList<HistogramComponent>();
 		components.add(new LayoutComponent(config));
+		components.add(new SectionComponent(config).addSection(sections));
 	}
 	
 	@Override
