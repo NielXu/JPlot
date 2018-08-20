@@ -112,6 +112,18 @@ public class Expression {
 		return pts;
 	}
 	
+	/**
+	 * Get a single point on the expression by providing the x value
+	 * @param x X value of the point
+	 * @return A point that contains given x value and a calculated y value
+	 */
+	public Point getPoint(double x) {
+		Point p = new Point();
+		p.x = x;
+		p.y = Evaluator.evaluate(exp.replace("x", "(" + String.valueOf(x) + ")"));
+		return p;
+	}
+	
 	/*
 	 * Check if the parenthesis is symmetry or not. If yes return true, return false otherwise
 	 */

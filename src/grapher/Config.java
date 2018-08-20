@@ -84,6 +84,9 @@ public class Config {
 	 * left corner on the jframe and also a small rectangle will be rendered at cursor location**/
 	public boolean show_cursorxy = false;
 	
+	/**Show expressions on top left corner**/
+	public boolean show_expressions = true;
+	
 	/**The DecimalFormat that will be apply to cursorlocation x,y values. However, show_cursorxy need to be
 	 * enabled first in order to apply this configuration**/
 	public DecimalFormat cursorlocation_decimal = new DecimalFormat("#0.00");
