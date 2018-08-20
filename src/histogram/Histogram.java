@@ -1,5 +1,10 @@
 package histogram;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+
+import javax.imageio.ImageIO;
+
 import histogram.ui.HistogramWindow;
 
 /**
@@ -36,6 +41,25 @@ public class Histogram {
 	 */
 	public void addSection(Section s) {
 		histogram.addSection(s);
+	}
+	
+	/**
+	 * Save the histogram as the given image type.
+	 * This method only work after the show() method is called.
+	 * @param name The name of the image file
+	 * @param dir The directory that the image will be saved at
+	 * @param type The image type, img, jpg or png
+	 */
+	public void save_img(String name, String dir, String type) {
+		BufferedImage img = histogram.get_img();
+		try{
+			File f = new File(dir + "\\" + name + "." + type);
+			f.createNewFile();
+			ImageIO.write(img, type, f);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**

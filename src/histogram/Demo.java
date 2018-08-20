@@ -51,6 +51,7 @@ public class Demo {
 		h.addSection(s5);
 		// Display
 		h.show();
+		h.save_img("histogram", "F:\\github\\Grapher\\resources", "jpg");
 		
 		
 		// SimpleHistogram simplifies the steup proccess by providing a

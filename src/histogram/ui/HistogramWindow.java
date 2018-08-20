@@ -1,5 +1,7 @@
 package histogram.ui;
 
+import java.awt.image.BufferedImage;
+
 import javax.swing.JFrame;
 
 import histogram.Config;
@@ -14,6 +16,9 @@ import histogram.Section;
  */
 public class HistogramWindow {
 
+	/**The image that saves Graphics**/
+	private BufferedImage img;
+	
 	/**JFrame window**/
 	private JFrame frame;
 	
@@ -51,6 +56,18 @@ public class HistogramWindow {
 	public void addSection(Section s) {
 		sections[index] = s;
 		index ++;
+	}
+	
+	/**
+	 * Get the image that saves everything painted on the graph
+	 * @return Image
+	 */
+	public BufferedImage get_img() {
+		if(img == null) {
+			img = new BufferedImage(config.width, config.height, BufferedImage.TYPE_INT_RGB);
+			histogrampanel.paint(img.createGraphics());
+		}
+		return img;
 	}
 	
 	/**
