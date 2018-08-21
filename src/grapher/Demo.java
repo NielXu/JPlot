@@ -2,9 +2,9 @@ package grapher;
 
 import java.awt.Color;
 
-import grapher.expression.Expression;
 import grapher.util.Point;
-import grapher.util.Randomizer;
+import util.Expression;
+import util.Randomizer;
 
 public class Demo {
 
@@ -43,9 +43,9 @@ public class Demo {
 		config.graph_location_x = 1300;
 		config.graph_location_y = 0;
 		Grapher pg = new Grapher(config);
-		pg.add_pts(p, Color.GREEN);
-		pg.add_pts(p2, Color.RED);
-		pg.add_pts(p3, Color.ORANGE);
+		pg.add_pts(Color.GREEN, p);
+		pg.add_pts(Color.RED, p2);
+		pg.add_pts(Color.ORANGE, p3);
 		pg.show();
 		
 		// Linking points together
@@ -66,6 +66,16 @@ public class Demo {
 		Grapher g2 = new Grapher(c2);
 		g2.add_pts(ps);
 		g2.show();
+		
+		// Points and Function on the same graph
+		Point[] points = Randomizer.point_randarray(-10, 10, -10, 10, 30);
+		Config c3 = new Config();
+		c3.graph_location_x = 800;
+		c3.graph_location_y = 300;
+		Grapher g3 = new Grapher(c3);
+		g3.add_exp(new Expression("sin(x)"));
+		g3.add_pts(points);
+		g3.show();
 	}
 	
 }

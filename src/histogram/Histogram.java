@@ -34,13 +34,15 @@ public class Histogram {
 	}
 	
 	/**
-	 * Add one section on the graph. Please notice that
+	 * Add one or more section on the graph. Please notice that
 	 * the number os sections cannot be greater than the
 	 * number of x units
-	 * @param s A section {@link histogram.Section}
+	 * @param sections Array of section {@link histogram.Section}
 	 */
-	public void addSection(Section s) {
-		histogram.addSection(s);
+	public void addSection(Section... sections) {
+		for(Section s : sections) {
+			histogram.addSection(s);
+		}
 	}
 	
 	/**

@@ -6,9 +6,9 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-import grapher.expression.Expression;
 import grapher.ui.GraphWindow;
 import grapher.util.Point;
+import util.Expression;
 
 /**
  * The Grapher is a tool that shows function on the screen.
@@ -40,32 +40,34 @@ public class Grapher {
 	}
 	
 	/**
-	 * Add expression on the graph.
-	 * @param exp The Expression object
+	 * Add one or more expressions to the graph
+	 * @param exp Expression array
 	 */
-	public void add_exp(Expression exp){
-		exp.applyConfig(config);
-		graph.buffer_exp(exp);
+	public void add_exp(Expression...exp) {
+		for(Expression e: exp) {
+			e.applyConfig(config);
+			graph.buffer_exp(e);
+		}
 	}
 	
 	/**
-	 * Add points on the graph. The points will be discrete and
+	 * Add one or more points on the graph. The points will be discrete and
 	 * will not be connected together. However, regression is
 	 * available with proper configuration.{@link grapher.Config}
 	 * @param points The array that contains points on the graph {@link grapher.util.Point}
 	 */
-	public void add_pts(Point[] points){
+	public void add_pts(Point... points){
 		graph.buffer_pts(points);
 	}
 	
 	/**
-	 * Add points on the graph with custom color. The points will be discrete and
+	 * Add one or more points on the graph with custom color. The points will be discrete and
 	 * will not be connected together. However, regression is
 	 * available with proper configuration.{@link grapher.Config}
 	 * @param points The array that contains points on the graph {@link grapher.util.Point}
 	 * @param c Color of the points
 	 */
-	public void add_pts(Point[] points, Color c){
+	public void add_pts(Color c, Point... points){
 		graph.buffer_pts(points, c);
 	}
 	

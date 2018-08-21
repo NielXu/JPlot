@@ -2,15 +2,10 @@ package grapher.ui.components;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Path2D;
-import java.util.ArrayList;
 import java.util.List;
 
 import grapher.Config;
-import grapher.expression.Expression;
-import grapher.util.Point;
+import util.Expression;
 
 /**
  * The function component responsible for rendering the given functions. It
@@ -35,37 +30,17 @@ public class FunctionComponent extends GraphComponent{
 
 	@Override
 	public void render(Graphics g) {
-		// Convert graphics to graphics2d
-		Graphics2D g2d = (Graphics2D)g;
-		AffineTransform transform = g2d.getTransform();
-		super.transform_to_origin(g2d);
-		g2d.setColor(config.func_color);
-		// Save expressions
-		List<Expression> e = new ArrayList<Expression>();
 		// Iterate and render all points, connect them with Path
 		for(int i=0;i<expressions.size();i++){
-			Expression exp = expressions.get(i);
-			e.add(exp);
-			Point[] exp_pts = exp.getPoints();
-			Path2D path = new Path2D.Float();
-			for(int j=0;j<exp_pts.length;j++){
-				Point p = exp_pts[j];
-				double[] trans = translate(p.x, p.y);
-				if(j==0) path.moveTo(trans[0], trans[1]);
-				else path.lineTo(trans[0], trans[1]);
-			}
-			g2d.setColor(exp.getColor());
-			g2d.draw(path);
+			super.render_expression(g, expressions.get(i));
 		}
-		// Remember to reset origin back to normal
-		g2d.setTransform(transform);
-		renderexpressions(g, e);
+		renderexpressions(g);
 	}
 	
-	private void renderexpressions(Graphics g, List<Expression> e) {
+	private void renderexpressions(Graphics g) {
 		if(config.show_expressions) {
-			for(int i=0;i<e.size();i++) {
-				Expression exp = e.get(i);
+			for(int i=0;i<expressions.size();i++) {
+				Expression exp = expressions.get(i);
 				Color c = exp.getColor();
 				String sexp = exp.getExpression();
 				g.setColor(c);

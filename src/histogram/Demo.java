@@ -2,7 +2,7 @@ package histogram;
 
 import java.awt.Color;
 
-import grapher.util.Randomizer;
+import util.Randomizer;
 
 public class Demo {
 

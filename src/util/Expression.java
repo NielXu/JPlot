@@ -1,4 +1,4 @@
-package grapher.expression;
+package util;
 
 import java.awt.Color;
 import java.util.Stack;
@@ -27,7 +27,7 @@ public class Expression {
 	
 	/**
 	 * Setup the expression by providing it in string format. The expression has some
-	 * restrictions(see {@link grapher.expression.Evaluator#evaluate(String)}) and must follow the following rules:
+	 * restrictions(see {@link util.Evaluator#evaluate(String)}) and must follow the following rules:
 	 * <ul>
 	 * <li>Only one variable allow at this time, and it should only be 'x', does not support other letters</li>
 	 * <li>No 'y=...' needed</li>
@@ -41,7 +41,7 @@ public class Expression {
 	
 	/**
 	 * Setup the expression by providing it in string format. And can also customize the functoin color.
-	 * The expression has some restrictions(see {@link grapher.expression.Evaluator#evaluate(String)})
+	 * The expression has some restrictions(see {@link util.Evaluator#evaluate(String)})
 	 * and must follow the following rules:
 	 * <ul>
 	 * <li>Only one variable allow at this time, and it should only be 'x', does not support other letters</li>
@@ -87,7 +87,7 @@ public class Expression {
 	
 	/**
 	 * Evaluate number of points of a function based on the configuration. Using
-	 * {@link grapher.expression.Evaluator#evaluate(String)} to evaluate the results,
+	 * {@link util.Evaluator#evaluate(String)} to evaluate the results,
 	 * therefore, must obey the rules as describing in the document.
 	 * @return An array that contains points of a function.
 	 */

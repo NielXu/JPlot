@@ -14,6 +14,16 @@ import java.text.DecimalFormat;
  */
 public class Config {
 	
+	/**
+	 * Type of regression models
+	 * @author Daniel Xu
+	 *
+	 */
+	public enum RegressionModel{
+		LINEAR,
+		POLY
+	}
+	
 	/**The title of the window, cannot be modified**/
 	public final String TITLE = "Grapher v0.1 test";
 	
@@ -86,6 +96,12 @@ public class Config {
 	
 	/**Show expressions on top left corner**/
 	public boolean show_expressions = true;
+	
+	/**Do regression calculations with the given points on graph, and show it on the graph**/
+	public boolean show_regression = false;
+	
+	/**The default regression model for regression calculations**/
+	public RegressionModel regression_model = RegressionModel.LINEAR;
 	
 	/**The DecimalFormat that will be apply to cursorlocation x,y values. However, show_cursorxy need to be
 	 * enabled first in order to apply this configuration**/

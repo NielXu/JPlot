@@ -1,11 +1,15 @@
 package grapher.ui.components;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Path2D;
 import java.util.List;
 
 import grapher.Config;
-import grapher.expression.Expression;
 import grapher.util.Buffer;
+import grapher.util.Point;
+import util.Expression;
 
 /**
  * GraphComponent is the abstract parent class that every components should extends. It includes some
@@ -68,6 +72,32 @@ public abstract class GraphComponent {
 	 */
 	protected final void transform_to_origin(Graphics g) {
 		g.translate(origin_x, origin_y);
+	}
+	
+	/**
+	 * Render a expression on the graph
+	 * @param g Graphics
+	 * @param e Expression {@link util.Expression}
+	 */
+	protected void render_expression(Graphics g, Expression e) {
+		// Convert graphics to graphics2d
+		Graphics2D g2d = (Graphics2D)g;
+		AffineTransform transform = g2d.getTransform();
+		transform_to_origin(g2d);
+		g2d.setColor(config.func_color);
+		// Iterate and render all points, connect them with Path
+		Point[] exp_pts = e.getPoints();
+		Path2D path = new Path2D.Float();
+		for(int j=0;j<exp_pts.length;j++){
+			Point p = exp_pts[j];
+			double[] trans = translate(p.x, p.y);
+			if(j==0) path.moveTo(trans[0], trans[1]);
+			else path.lineTo(trans[0], trans[1]);
+		}
+		g2d.setColor(e.getColor());
+		g2d.draw(path);
+		// Remember to reset origin back to normal
+		g2d.setTransform(transform);
 	}
 	
 	/**

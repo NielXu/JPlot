@@ -17,14 +17,20 @@ public class Section {
 		bars = new ArrayList<Bar>();
 	}
 	
-	public void addBar(Bar b) {
-		bars.add(b);
+	/**
+	 * Add one or more bars to the histogram
+	 * @param b Array of bar {@link histogram.Bar}
+	 */
+	public void addBar(Bar... bars) {
+		for(Bar b : bars) {
+			this.bars.add(b);
+		}
 	}
 	
-	public void setBar(int index, Bar b) {
-		bars.set(index, b);
-	}
-	
+	/**
+	 * Get all the bars that this section contains
+	 * @return Array of bar
+	 */
 	public List<Bar> getBars(){
 		return bars;
 	}

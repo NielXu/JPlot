@@ -1,4 +1,8 @@
-package grapher.util;
+package util;
+
+import java.math.BigDecimal;
+
+import grapher.util.Point;
 
 /**
  * Randomizer provides some useful methods to get random values. Please ensure that the 
@@ -96,4 +100,31 @@ public class Randomizer {
 		return p;
 	}
 	
+	/**
+	 * Get an random <b>BigDecimal</b> in range(min, max), where min and max are included. If the
+	 * max < min, the random BigDecimal will still in range(min, max)
+	 * @param min The min value, included
+	 * @param max The max value, included
+	 * @return An random BigDecimal in range(min, max)
+	 */
+	public static BigDecimal bigdecimal_rand(double min, double max) {
+		return new BigDecimal(Randomizer.double_rand(min, max));
+	}
+	
+	/**
+	 * Get an array of random <b>BigDecimal</b>, the numbers will be in range(min, max), where
+	 * min and max are included.If the max < min, the random numbers will still in range(min, max)
+	 * @param min The min value, included
+	 * @param max The max value, included
+	 * @param capacity The total capacity of the array, how many numbers will be generated
+	 * @return Array that contains random BigDecimal
+	 */
+	public static BigDecimal[] bigdecimal_randarray(double min, double max, int capacity) {
+		double[] rand = Randomizer.double_randarray(min, max, capacity);
+		BigDecimal[] b = new BigDecimal[capacity];
+		for(int i=0;i<capacity;i++) {
+			b[i] = new BigDecimal(rand[i]);
+		}
+		return b;
+	}
 }
