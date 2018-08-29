@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.util.List;
 
 import grapher.Config;
-import util.Expression;
+import grapher.util.Expression;
 
 /**
  * The function component responsible for rendering the given functions. It

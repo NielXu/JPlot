@@ -1,10 +1,10 @@
-package util;
+package grapher.util;
 
 import java.awt.Color;
 import java.util.Stack;
 
 import grapher.Config;
-import grapher.util.Point;
+import util.Evaluator;
 
 /**
  * Expression takes an expression in string format and evalute some points of the given function.

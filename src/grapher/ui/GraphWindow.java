@@ -9,8 +9,8 @@ import javax.swing.JFrame;
 
 import grapher.Config;
 import grapher.util.Buffer;
+import grapher.util.Expression;
 import grapher.util.Point;
-import util.Expression;
 
 /**
  * Provide window for graphing. The window is not resizable

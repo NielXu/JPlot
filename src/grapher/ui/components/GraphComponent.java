@@ -8,8 +8,8 @@ import java.util.List;
 
 import grapher.Config;
 import grapher.util.Buffer;
+import grapher.util.Expression;
 import grapher.util.Point;
-import util.Expression;
 
 /**
  * GraphComponent is the abstract parent class that every components should extends. It includes some
@@ -77,7 +77,7 @@ public abstract class GraphComponent {
 	/**
 	 * Render a expression on the graph
 	 * @param g Graphics
-	 * @param e Expression {@link util.Expression}
+	 * @param e Expression {@link grapher.util.Expression}
 	 */
 	protected void render_expression(Graphics g, Expression e) {
 		// Convert graphics to graphics2d

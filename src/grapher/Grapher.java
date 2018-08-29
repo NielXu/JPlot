@@ -7,8 +7,8 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 import grapher.ui.GraphWindow;
+import grapher.util.Expression;
 import grapher.util.Point;
-import util.Expression;
 
 /**
  * The Grapher is a tool that shows function on the screen.

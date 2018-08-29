@@ -2,8 +2,8 @@ package grapher;
 
 import java.awt.Color;
 
+import grapher.util.Expression;
 import grapher.util.Point;
-import util.Expression;
 import util.Randomizer;
 
 public class Demo {
