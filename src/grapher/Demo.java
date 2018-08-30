@@ -50,10 +50,11 @@ public class Demo {
 		
 		// Linking points together
 		Point[] ps = new Point[20];
+		double[] vals = Randomizer.relative_rand(0, 2, 20);
 		for(int i=0;i<ps.length;i++) {
 			Point pt = new Point();
 			pt.x  = i-10;
-			pt.y = Randomizer.double_rand(-10, 10);
+			pt.y = vals[i];
 			ps[i] = pt;
 		}
 		Config c2 = new Config();

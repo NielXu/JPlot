@@ -1,6 +1,7 @@
 package util;
 
 import java.math.BigDecimal;
+import java.util.Random;
 
 import grapher.util.Point;
 
@@ -13,6 +14,8 @@ import grapher.util.Point;
  */
 public class Randomizer {
 
+	private static final Random random = new Random();
+	
 	private Randomizer() {}
 	
 	/**
@@ -23,7 +26,7 @@ public class Randomizer {
 	 * @return An random integer in range(min, max)
 	 */
 	public static int int_rand(int min, int max) {
-		return (int)(Math.random()*(max-min+1))+min;
+		return random.nextInt((max - min) + 1) + min;
 	}
 	
 	/**
@@ -50,7 +53,7 @@ public class Randomizer {
 	 * @return An random number(floating points) in range(min, max)
 	 */
 	public static double double_rand(double min, double max) {
-		return Math.random()*(max-min)+min;
+		return min + (max - min) * random.nextDouble();
 	}
 	
 	/**
@@ -133,7 +136,7 @@ public class Randomizer {
 	 * @return Integer that is either 1 or 0
 	 */
 	public static int bin_rand() {
-		return (int)(Math.random());
+		return random.nextBoolean()? 0:1;
 	}
 	
 	/**
@@ -170,7 +173,7 @@ public class Randomizer {
 				rand[i] = Randomizer.double_rand(previous, previous + steprange);
 			}
 			else {
-				rand[i] = Randomizer.double_rand(previous, previous + steprange);
+				rand[i] = Randomizer.double_rand(previous, previous - steprange);
 			}
 		}
 		return rand;
