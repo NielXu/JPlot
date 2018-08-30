@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import grapher.Config;
 import grapher.util.Buffer;
@@ -27,7 +28,7 @@ public class GraphWindow{
 	private JFrame frame;
 	
 	/**The GraphPanel that contains the graph of the function**/
-	private GraphPanel panel;
+	private JPanel panel;
 	
 	/**List of expressions**/
 	private List<Expression> expressions;

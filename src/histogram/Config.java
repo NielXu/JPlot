@@ -83,6 +83,9 @@ public class Config {
 	/**The color of the bar number**/
 	public Color barnumber_color = Color.BLACK;
 	
+	/**The color of the category label**/
+	public Color categorylabel_color = Color.BLACK;
+	
 	/**The font that used by histogram title, cannot be modified for now**/
 	public final Font title_font = new Font("Helvetica", Font.BOLD, 18);
 	
@@ -100,6 +103,9 @@ public class Config {
 	
 	/**The font that used by bar number, cannot be modified for now**/
 	public final Font barnumber_font = new Font("Helvetica", Font.BOLD, 12);
+	
+	/**The font that used by category label, cannot be modified for now**/
+	public final Font category_font = new Font("Helvetica", Font.BOLD, 12);
 	
 	/**Show vertical grid on xaxis**/
 	public boolean show_xgrid = true;

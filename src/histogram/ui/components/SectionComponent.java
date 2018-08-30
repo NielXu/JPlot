@@ -73,14 +73,15 @@ public class SectionComponent extends HistogramComponent{
 		int starty = 20;
 		int offset = 0;
 		for(int i=0;i<cs.size();i++) {
-			if(starty + i*20 >= end_y[1]) {
+			if(starty + i*20 + offset >= end_y[1]) {
 				startx += 125;
 				offset -= i*20;
 			}
 			Category c = cs.get(i);
 			g.setColor(c.getColor());
 			g.fillRect(startx, starty + i*20 + offset, 20, 10);
-			g.setColor(Color.BLACK);
+			g.setColor(config.categorylabel_color);
+			g.setFont(config.category_font);
 			g.drawString(c.getName(), startx+25, starty+i*20+10+offset);
 		}
 	}
