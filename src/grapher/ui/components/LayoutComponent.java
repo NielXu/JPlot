@@ -34,9 +34,6 @@ public class LayoutComponent extends GraphComponent{
 			g.setColor(config.axis_color);
 			g.drawLine(0, origin_y, config.size, origin_y);
 			g.drawLine(origin_x, 0, origin_x, config.size);
-			// Render origin
-			g.setColor(config.unit_color);
-			g.fillRect(origin_x-2, origin_y-2, 4, 4);
 		}
 		// Draw units
 		if(config.show_unit){
@@ -45,6 +42,9 @@ public class LayoutComponent extends GraphComponent{
 				g.fillRect(i*ratio-2, origin_y-2, 4, 4);
 				g.fillRect(origin_x-2, i*ratio-2, 4, 4);
 			}
+			// Render origin
+			g.setColor(config.unit_color);
+			g.fillRect(origin_x-2, origin_y-2, 4, 4);
 		}
 	}
 

@@ -3,7 +3,6 @@ package grapher.util;
 import java.awt.Color;
 import java.util.Stack;
 
-import grapher.Config;
 import util.Evaluator;
 
 /**
@@ -16,14 +15,11 @@ public class Expression {
 	/**Expression in string**/
 	private String exp;
 	
-	/**The points that being evaluated**/
-	private Point[] pts;
-	
-	/**Configuration**/
-	private Config config;
-	
 	/**Function color**/
 	private Color func_color;
+	
+	/**Points for Grapher**/
+	private Point[] graphPoint;
 	
 	/**
 	 * Setup the expression by providing it in string format. The expression has some
@@ -58,22 +54,10 @@ public class Expression {
 	}
 	
 	/**
-	 * Apply configuration to the Expression, this method should only
-	 * be accessed by GraphWindow but not other classes.
-	 * @param config The Config object
-	 */
-	public void applyConfig(Config config){
-		this.config = config;
-	}
-	
-	/**
 	 * Get the color of the function
-	 * @return Color
+	 * @return color of the function, null if not specified
 	 */
 	public Color getColor() {
-		if(func_color == null){
-			return config.func_color;
-		}
 		return func_color;
 	}
 	
@@ -86,19 +70,60 @@ public class Expression {
 	}
 	
 	/**
-	 * Evaluate number of points of a function based on the configuration. Using
+	 * Evaluate number of points of a function. Using
 	 * {@link util.Evaluator#evaluate(String)} to evaluate the results,
 	 * therefore, must obey the rules as describing in the document.
-	 * @return An array that contains points of a function.
+	 * @param min The min value on x axis, must be an integer
+	 * @param max The max value on x axis, must be an integer
+	 * @param density The number of points that will be evaluated between two units
+	 * @return An array that contains points of a function in range(min, max), the length
+	 * will be (max-min)*density
 	 */
-	public Point[] getPoints(){
-		if(pts == null){
-			int min = config.min_unit;
-			int max = config.max_unit;
+	public Point[] getPoints(int min, int max, int density){
+		Point[] pts;
+		// The number of units for x-axis and y-axis
+		int unit = max - min;
+		density = density * unit;
+		pts = new Point[density];
+		float step = unit / (float)density;
+		// Setup points
+		for(int i=0;i<density;i++){
+			float x = min + i * step;
+			Point p = null;
+			try {
+				p = new Point();
+				p.x = x;
+				p.y = Evaluator.evaluate(exp.replace("x", "("+String.valueOf(x)+")"));
+				pts[i] = p;
+			}
+			catch(UnsupportedOperationException e) {
+				p = new InvalidPoint(x);
+				pts[i] = p;
+			}
+		}
+		return pts;
+	}
+	
+	/**
+	 * Similar with {@link grapher.util.Expression#getPoints(int, int, int)},
+	 * this method also evaluate points between min and max. However, this
+	 * method is for the {@link grapher.Grapher} to use since it only evaluates values once and
+	 * then store it locally, call this method again will not affect the
+	 * return value. Therefore, be caerful when calling this method, usually, 
+	 * one should not call this method directly, <b>it should only be accessed by
+	 * Grapher</b>
+	 * @param min The min value on x axis, must be an integer
+	 * @param max The max value on x axis, must be an integer
+	 * @param density The number of points that will be evaluated between two units
+	 * @return An array that contains points of a function in range(min, max), the length
+	 * will be (max-min)*density
+	 */
+	public Point[] getGraphPoints(int min, int max, int density) {
+		if(graphPoint == null) {
 			// The number of units for x-axis and y-axis
 			int unit = max - min;
-			int density = config.density * unit;
-			pts = new Point[density];
+			density = density * unit;
+			graphPoint = new Point[density];
 			float step = unit / (float)density;
 			// Setup points
 			for(int i=0;i<density;i++){
@@ -108,21 +133,15 @@ public class Expression {
 					p = new Point();
 					p.x = x;
 					p.y = Evaluator.evaluate(exp.replace("x", "("+String.valueOf(x)+")"));
-					pts[i] = p;
+					graphPoint[i] = p;
 				}
 				catch(UnsupportedOperationException e) {
-					if(config.ignore_invalid) {
-						p = new InvalidPoint(x);
-						pts[i] = p;
-					}
-					else {
-						throw new UnsupportedOperationException("Expression '" + toString() + "' cannot "
-								+ "evaluate point with x="+x);
-					}
+					p = new InvalidPoint(x);
+					graphPoint[i] = p;
 				}
 			}
 		}
-		return pts;
+		return graphPoint;
 	}
 	
 	/**

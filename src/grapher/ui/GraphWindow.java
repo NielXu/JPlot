@@ -58,8 +58,6 @@ public class GraphWindow{
 	 * @param exp The Expression object
 	 */
 	public void buffer_exp(Expression exp){
-		// Evaluate points
-		exp.getPoints();
 		expressions.add(exp);
 	}
 	

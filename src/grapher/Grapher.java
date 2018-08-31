@@ -20,9 +20,6 @@ public class Grapher {
 	/**The graph window**/
 	private GraphWindow graph;
 	
-	/**Configuration**/
-	private Config config;
-	
 	/**
 	 * Construct grapher with default configuration
 	 */
@@ -36,7 +33,6 @@ public class Grapher {
 	 */
 	public Grapher(Config config){
 		graph = new GraphWindow(config);
-		this.config = config;
 	}
 	
 	/**
@@ -45,7 +41,6 @@ public class Grapher {
 	 */
 	public void add_exp(Expression...exp) {
 		for(Expression e: exp) {
-			e.applyConfig(config);
 			graph.buffer_exp(e);
 		}
 	}

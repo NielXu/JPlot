@@ -41,7 +41,7 @@ public class FunctionComponent extends GraphComponent{
 		if(config.show_expressions) {
 			for(int i=0;i<expressions.size();i++) {
 				Expression exp = expressions.get(i);
-				Color c = exp.getColor();
+				Color c = exp.getColor() == null? config.func_color:exp.getColor();
 				String sexp = exp.getExpression();
 				g.setColor(c);
 				g.drawString("y=" + sexp, 10, 15+i*15);
