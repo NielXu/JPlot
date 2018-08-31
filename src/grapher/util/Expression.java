@@ -102,11 +102,24 @@ public class Expression {
 			float step = unit / (float)density;
 			// Setup points
 			for(int i=0;i<density;i++){
-				Point p = new Point();
 				float x = min + i * step;
-				p.x = x;
-				p.y = Evaluator.evaluate(exp.replace("x", "("+String.valueOf(x)+")"));
-				pts[i] = p;
+				Point p = null;
+				try {
+					p = new Point();
+					p.x = x;
+					p.y = Evaluator.evaluate(exp.replace("x", "("+String.valueOf(x)+")"));
+					pts[i] = p;
+				}
+				catch(UnsupportedOperationException e) {
+					if(config.ignore_invalid) {
+						p = new InvalidPoint(x);
+						pts[i] = p;
+					}
+					else {
+						throw new UnsupportedOperationException("Expression '" + toString() + "' cannot "
+								+ "evaluate point with x="+x);
+					}
+				}
 			}
 		}
 		return pts;

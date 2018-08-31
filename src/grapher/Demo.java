@@ -20,16 +20,17 @@ public class Demo {
 		Config c = new Config();
 		// Adjust colors, units and so on
 		c.show_grid = false;
-		c.max_unit = 100;
-		c.min_unit = -100;
+		c.max_unit = 5;
+		c.min_unit = -5;
 		c.show_unit = false;
 		c.size = 400;
 		c.graph_location_x = 0;
 		c.graph_location_y = 0;
 		c.func_color = Color.YELLOW;
+		c.ignore_invalid = false;
 		// Apply configuration to the grapher
 		Grapher custom_grapher = new Grapher(c);
-		custom_grapher.add_exp(new Expression("(x/2)*sin(x)"));
+		custom_grapher.add_exp(new Expression("sin(x)"), new Expression("sin(x+90)", Color.RED), new Expression("sin(x-90)", Color.BLUE));
 		// Show up on screen
 		custom_grapher.show();
 		
@@ -77,6 +78,7 @@ public class Demo {
 		g3.add_exp(new Expression("sin(x)"));
 		g3.add_pts(points);
 		g3.show();
+
 	}
 	
 }

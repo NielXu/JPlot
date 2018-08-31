@@ -87,6 +87,10 @@ public class Config {
 	/**Show expressions on top left corner**/
 	public boolean show_expressions = true;
 	
+	/**Ignore invalid point of some functions, if this is disabled,
+	 * a UnsupportedOperationException will be thrown when the operation is invalid, such as divided by 0.**/
+	public boolean ignore_invalid = true;
+	
 	/**The DecimalFormat that will be apply to cursorlocation x,y values. However, show_cursorxy need to be
 	 * enabled first in order to apply this configuration**/
 	public DecimalFormat cursorlocation_decimal = new DecimalFormat("#0.00");

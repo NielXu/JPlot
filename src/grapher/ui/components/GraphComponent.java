@@ -9,6 +9,7 @@ import java.util.List;
 import grapher.Config;
 import grapher.util.Buffer;
 import grapher.util.Expression;
+import grapher.util.InvalidPoint;
 import grapher.util.Point;
 
 /**
@@ -90,9 +91,11 @@ public abstract class GraphComponent {
 		Path2D path = new Path2D.Float();
 		for(int j=0;j<exp_pts.length;j++){
 			Point p = exp_pts[j];
-			double[] trans = translate(p.x, p.y);
-			if(j==0) path.moveTo(trans[0], trans[1]);
-			else path.lineTo(trans[0], trans[1]);
+			if(!(p instanceof InvalidPoint)) {
+				double[] trans = translate(p.x, p.y);
+				if(j==0) path.moveTo(trans[0], trans[1]);
+				else path.lineTo(trans[0], trans[1]);
+			}
 		}
 		g2d.setColor(e.getColor());
 		g2d.draw(path);
