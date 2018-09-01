@@ -41,6 +41,10 @@ public class Demo {
 		 * Just an example 
 		 */
 		// beautifulGrapher().show();
+		
+		Grapher[] graphers = qualityCompare();
+		graphers[0].show();
+		graphers[1].show();
 	}
 	
 	/**
@@ -61,12 +65,14 @@ public class Demo {
 	 * see {@link grapher.Config} to check out what values can be customized
 	 */
 	public static Grapher customGrapher() {
-		Config con = new Config();		// Create custom Config, all values are public for direct access
-		con.show_grid = false;			// set show_grid=false to disable grid on graph
-		con.show_unit = false;			// set show_unit=false to disable unit on graph
-		con.graph_location_x = 0;		// set window location x to 0
-		con.graph_location_y = 0;		// set window location y to 0
-		Grapher g = new Grapher(con);	// Apply Config by passing it to the Grapher constructor
+		Config con = new Config();			// Create custom Config, all values are public for direct access
+		con.background_color = Color.WHITE;	// Set background color to white
+		con.axis_color = Color.BLACK;		// Set axis color to black
+		con.show_grid = false;				// set show_grid=false to disable grid on graph
+		con.show_unit = false;				// set show_unit=false to disable unit on graph
+		con.graph_location_x = 0;			// set window location x to 0
+		con.graph_location_y = 0;			// set window location y to 0
+		Grapher g = new Grapher(con);		// Apply Config by passing it to the Grapher constructor
 		Expression e1 = new Expression("sin(x)", Color.RED);
 		Expression e2 = new Expression("sin(x+90)", Color.GREEN);
 		Expression e3 = new Expression("sin(x-90)", Color.BLUE);
@@ -84,14 +90,16 @@ public class Demo {
 		Config con = new Config();
 		con.show_unit = false;
 		con.show_grid = false;
+		con.point_cicrle = true;		// Using circle instead of rectangle to represent points
+		con.point_size = 6;				// Global point size: 6
 		Grapher g = new Grapher(con);
 		Point[] p1 = Randomizer.point_randarray(-10, 10, -10, 10, 20);
 		Point[] p2 = Randomizer.point_randarray(-10, 10, -10, 10, 20);
 		Point[] p3 = Randomizer.point_randarray(-10, 10, -10, 10, 20);
 		Point ip = new InvalidPoint(3);	// Creating an invalid point
 		g.add_pts(Color.RED, p1);		// Add points with given color
-		g.add_pts(Color.GREEN, p2);		
-		g.add_pts(Color.BLUE, p3);
+		g.add_pts(Color.GREEN, p2);		// Add points with given color
+		g.add_pts(Color.BLUE, 8, p3);	// Add points with specific size and color
 		g.add_pts(ip);					// Invalid point will not be drawn
 		return g;
 	}
@@ -142,5 +150,39 @@ public class Demo {
 		}
 		g.add_exp(e);
 		return g;
+	}
+	
+	/**
+	 * This is an example of the difference between high quality graph and low
+	 * quality graph. Check out the result and you may see there is huge difference
+	 * between two graphs. Therefore, we suggest enable high quality graph(it is enabled by default)
+	 */
+	public static Grapher[] qualityCompare() {
+		// First Grapher, with high quality
+		Config c1 = new Config();
+		c1.max_unit = 5;
+		c1.min_unit = -5;
+		c1.graph_location_x = 0;
+		c1.graph_location_y = 0;
+		c1.show_grid = false;
+		c1.background_color = Color.WHITE;
+		c1.axis_color = Color.BLACK;
+		c1.show_unit = false;
+		Grapher g1 = new Grapher(c1);
+		g1.add_exp(new Expression("sin(x)"));
+		// Second Grapher with low quality
+		Config c2 = new Config();
+		c2.max_unit = 5;
+		c2.min_unit = -5;
+		c2.graph_location_x = 600;
+		c2.graph_location_y = 0;
+		c2.show_grid = false;
+		c2.background_color = Color.WHITE;
+		c2.axis_color = Color.BLACK;
+		c2.show_unit = false;
+		c2.high_quality = false;		// disable high quality graph
+		Grapher g2 = new Grapher(c2);
+		g2.add_exp(new Expression("sin(x)"));
+		return new Grapher[] {g1, g2};
 	}
 }

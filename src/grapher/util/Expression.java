@@ -73,6 +73,9 @@ public class Expression {
 	 * Evaluate number of points of a function. Using
 	 * {@link util.Evaluator#evaluate(String)} to evaluate the results,
 	 * therefore, must obey the rules as describing in the document.
+	 * The points that cannot be evaluated such as 1/x when x=0 will be stored as
+	 * {@link grapher.util.InvalidPoint}, otherwise, 
+	 * {@link grapher.util.Point}
 	 * @param min The min value on x axis, must be an integer
 	 * @param max The max value on x axis, must be an integer
 	 * @param density The number of points that will be evaluated between two units

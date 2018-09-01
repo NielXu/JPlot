@@ -63,22 +63,14 @@ public class GraphWindow{
 	
 	/**
 	 * Buffer the points, store points in the List and draw
-	 * on the graph when all the points had been added.
-	 * @param points Array of points
-	 */
-	public void buffer_pts(Point[] points){
-		this.points.add(new Buffer(points, config, null));
-	}
-	
-	/**
-	 * Buffer the points, store points in the List and draw
 	 * on the graph when all the points had been added. Can
-	 * also customize the point color
+	 * also customize the point color and size
 	 * @param points Array of points
 	 * @param c The color of the points
+	 * @param size The size of the points
 	 */
-	public void buffer_pts(Point[] points, Color c){
-		this.points.add(new Buffer(points, config, c));
+	public void buffer_pts(Point[] points, Color c, int size){
+		this.points.add(new Buffer(points, c, size));
 	}
 	
 	/**

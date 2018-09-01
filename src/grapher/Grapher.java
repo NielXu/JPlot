@@ -20,6 +20,9 @@ public class Grapher {
 	/**The graph window**/
 	private GraphWindow graph;
 	
+	/**Configuration**/
+	private Config config;
+	
 	/**
 	 * Construct grapher with default configuration
 	 */
@@ -33,10 +36,13 @@ public class Grapher {
 	 */
 	public Grapher(Config config){
 		graph = new GraphWindow(config);
+		this.config = config;
 	}
 	
 	/**
-	 * Add one or more expressions to the graph
+	 * Add one or more expressions to the graph. Each expression <b>can
+	 * only be put in one graph</b>. Adding one expression to multiple
+	 * graphs may result rendering error.
 	 * @param exp Expression array
 	 */
 	public void add_exp(Expression...exp) {
@@ -52,7 +58,18 @@ public class Grapher {
 	 * @param points The array that contains points on the graph {@link grapher.util.Point}
 	 */
 	public void add_pts(Point... points){
-		graph.buffer_pts(points);
+		graph.buffer_pts(points, config.point_color, config.point_size);
+	}
+	
+	/**
+	 * Add one or more points on the graph with custom size. The points will be discrete and
+	 * will not be connected together. However, regression is
+	 * available with proper configuration.{@link grapher.Config}
+	 * @param size The size of the point
+	 * @param points The array that contains points on the graph {@link grapher.util.Point}
+	 */
+	public void add_pts(int size, Point... points) {
+		graph.buffer_pts(points, config.point_color, size);
 	}
 	
 	/**
@@ -63,7 +80,19 @@ public class Grapher {
 	 * @param c Color of the points
 	 */
 	public void add_pts(Color c, Point... points){
-		graph.buffer_pts(points, c);
+		graph.buffer_pts(points, c, config.point_size);
+	}
+	
+	/**
+	 * Add one or more points on the graph with custom size and color. The points will be discrete and
+	 * will not be connected together. However, regression is
+	 * available with proper configuration.{@link grapher.Config}
+	 * @param c The color of the points
+	 * @param size The size of the points
+	 * @param points The array that contains points on the graph {@link grapher.util.Point}
+	 */
+	public void add_pts(Color c, int size, Point... points) {
+		graph.buffer_pts(points, c, size);
 	}
 	
 	/**

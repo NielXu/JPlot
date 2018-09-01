@@ -39,6 +39,9 @@ public class Config {
 	 * The recommend value is 10 and it can be modified**/
 	public int density = 10;
 	
+	/**Default size of points on graph**/
+	public int point_size = 4;
+	
 	/**The default function color on the graph, if no specific color is given in Expression, grapher will use this color**/
 	public Color func_color = Color.BLUE;
 	
@@ -72,6 +75,9 @@ public class Config {
 	/**Showing units on the panel by default, can be modified**/
 	public boolean show_unit = true;
 	
+	/**Use round points to represent the points, if this is false, use rectangle instead**/
+	public boolean point_cicrle = false;
+	
 	/**Not showing numbers on axises by default, can be modified
 	 * Numbers on the axies might not be properly rendered in some cases, especially when
 	 * the there are two many units in a small window and the numbers will overlap each other**/
@@ -86,6 +92,9 @@ public class Config {
 	
 	/**Show expressions on top left corner**/
 	public boolean show_expressions = true;
+	
+	/**Allow ANTIALIASING for both text and lines on graph**/
+	public boolean high_quality = true;
 	
 	/**The DecimalFormat that will be apply to cursorlocation x,y values. However, show_cursorxy need to be
 	 * enabled first in order to apply this configuration**/
