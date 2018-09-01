@@ -26,9 +26,9 @@ public abstract class GraphComponent {
 	protected Config config;
 	
 	/**The number of units for x-axis and y-axis**/
-	protected int unit;
+	protected int xunit, yunit;
 	/**Ratio between x,y and pixels**/
-	protected int ratio;
+	protected int xratio, yratio;
 	/**Origin x,y**/
 	protected int origin_x, origin_y;
 	
@@ -39,10 +39,12 @@ public abstract class GraphComponent {
 	
 	// Init some of the important vars
 	private void init() {
-		unit = config.max_unit - config.min_unit;
-		ratio = config.size / unit;
-		origin_x = -config.min_unit * ratio;
-		origin_y = config.size - origin_x;
+		xunit = config.x_max - config.x_min;
+		yunit = config.y_max - config.y_min;
+		xratio = config.width / xunit;
+		yratio = config.height / yunit;
+		origin_x = -config.x_min * xratio;
+		origin_y = config.height - (-config.y_min * yratio);
 	}
 	
 	/**
@@ -52,7 +54,7 @@ public abstract class GraphComponent {
 	 * @return An array that contains {x,y} in pixels
 	 */
 	protected final double[] translate(double x, double y){
-		return new double[]{x*ratio, -y*ratio};
+		return new double[]{x*xratio, -y*yratio};
 	}
 	
 	/**
@@ -62,7 +64,7 @@ public abstract class GraphComponent {
 	 * @return An array that contains {x,y} in axis
 	 */
 	protected final double[] re_translate(double x, double y) {
-		return new double[] {x/ratio + config.min_unit, -y/ratio + config.max_unit};
+		return new double[] {x/xratio + config.x_min, -y/yratio + config.y_max};
 	}
 	
 	/**
@@ -87,7 +89,7 @@ public abstract class GraphComponent {
 		transform_to_origin(g2d);
 		g2d.setColor(config.func_color);
 		// Iterate and render all points, connect them with Path
-		Point[] exp_pts = e.getGraphPoints(config.min_unit, config.max_unit, config.density);
+		Point[] exp_pts = e.getGraphPoints(config.x_min, config.x_max, config.density);
 		Path2D path = new Path2D.Float();
 		for(int j=0;j<exp_pts.length;j++){
 			Point p = exp_pts[j];

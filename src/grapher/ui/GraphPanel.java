@@ -41,7 +41,7 @@ public class GraphPanel extends JPanel{
 	 */
 	public GraphPanel(List<Buffer> points, List<Expression> expressions, Config config){
 		super();
-		setPreferredSize(new Dimension(config.size, config.size));
+		setPreferredSize(new Dimension(config.width, config.height));
 		this.config = config;
 		components = new ArrayList<GraphComponent>();
 		components.add(new LayoutComponent(config));
@@ -71,7 +71,7 @@ public class GraphPanel extends JPanel{
 		}
 		// Background color rendering
 		g.setColor(config.background_color);
-		g.fillRect(0, 0, config.size, config.size);
+		g.fillRect(0, 0, config.width, config.height);
 		// Render components
 		for(GraphComponent c : components) {
 			c.render(g);

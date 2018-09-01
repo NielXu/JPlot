@@ -17,34 +17,38 @@ import util.Randomizer;
 public class Demo {
 
 	public static void main(String[] args){
+		
 		/*
 		 * Example of createing a simple Grapher with default Config
 		 */
-		// simpleGrapher().show();
+		//simpleGrapher().show();
 		
 		/*
 		 * Example of creating custom Grapher
 		 */
-		// customGrapher().show();
+		//customGrapher().show();
 		
 		/*
 		 * Example of drawing points on Grapher 
 		 */
-		// pointsGrapher().show();
+		//pointsGrapher().show();
 		
 		/*
 		 * Example of drawing points and functions on a same graph
 		 */
-		// funcsPointsGrapher().show();
+		//funcsPointsGrapher().show();
 		
 		/*
 		 * Just an example 
 		 */
-		// beautifulGrapher().show();
+		beautifulGrapher().show();
 		
-		Grapher[] graphers = qualityCompare();
-		graphers[0].show();
-		graphers[1].show();
+		/*
+		 * Show the difference between high quality and low quality
+		 */
+		//Grapher[] graphers = qualityCompare();
+		//graphers[0].show();
+		//graphers[1].show();
 	}
 	
 	/**
@@ -66,12 +70,18 @@ public class Demo {
 	 */
 	public static Grapher customGrapher() {
 		Config con = new Config();			// Create custom Config, all values are public for direct access
+		con.width = 800;
+		con.height = 600;
 		con.background_color = Color.WHITE;	// Set background color to white
 		con.axis_color = Color.BLACK;		// Set axis color to black
 		con.show_grid = false;				// set show_grid=false to disable grid on graph
 		con.show_unit = false;				// set show_unit=false to disable unit on graph
 		con.graph_location_x = 0;			// set window location x to 0
 		con.graph_location_y = 0;			// set window location y to 0
+		con.x_min = -3;						// set min value on x axis to -3
+		con.x_max = 5;						// set max value on x axis to 5
+		con.y_max = 3;						// set max value on y axis to 3
+		con.y_min = -3;						// set min value on y axis to -3
 		Grapher g = new Grapher(con);		// Apply Config by passing it to the Grapher constructor
 		Expression e1 = new Expression("sin(x)", Color.RED);
 		Expression e2 = new Expression("sin(x+90)", Color.GREEN);
@@ -129,10 +139,14 @@ public class Demo {
 	 */
 	public static Grapher beautifulGrapher() {
 		Config con = new Config();
+		con.width = 800;
+		con.height = 400;
 		con.show_unit = false;
 		con.show_grid = false;
-		con.min_unit = -1;
-		con.max_unit = 4;
+		con.x_min = -1;
+		con.x_max = 4;
+		con.y_min = -1;
+		con.y_max = 4;
 		Grapher g = new Grapher(con);
 		Expression e = new Expression("(x-1)^2", Color.ORANGE);
 		int density = 2;
@@ -160,8 +174,6 @@ public class Demo {
 	public static Grapher[] qualityCompare() {
 		// First Grapher, with high quality
 		Config c1 = new Config();
-		c1.max_unit = 5;
-		c1.min_unit = -5;
 		c1.graph_location_x = 0;
 		c1.graph_location_y = 0;
 		c1.show_grid = false;
@@ -172,8 +184,6 @@ public class Demo {
 		g1.add_exp(new Expression("sin(x)"));
 		// Second Grapher with low quality
 		Config c2 = new Config();
-		c2.max_unit = 5;
-		c2.min_unit = -5;
 		c2.graph_location_x = 600;
 		c2.graph_location_y = 0;
 		c2.show_grid = false;

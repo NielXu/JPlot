@@ -23,15 +23,29 @@ public class Config {
 	/**The y-axis of the graph window, default is -1, which means the center of the screen, can be modified**/
 	public int graph_location_y = -1;
 	
-	/**The size of the Panel(not window) by default, can be modified.
-	 * The size is width and height, the Panel must be a square**/
-	public int size = 600;
+	/**Width of the graph(Not window)**/
+	public int width = 600;
+	
+	/**Height of the graph(Not window)**/
+	public int height = 600;
+	
+	/**Max value on x axis**/
+	public int x_max = 10;
+	
+	/**Min value on y axis**/
+	public int x_min = -10;
+	
+	/**Max value on y axis**/
+	public int y_max = 10;
+	
+	/**Min value on y axis**/
+	public int y_min = -10;
 	
 	/**The max unit in the axises, for both x and y, can be modified**/
-	public int max_unit = 10;
+	// public int max_unit = 10;
 	
 	/**The min unit in the axises, for both x and y, can be modified**/
-	public int min_unit = -10;
+	// public int min_unit = -10;
 	
 	/**The density of the points represents that how many points will be
 	 * evaluated between one unit, the more points being evaluated, t

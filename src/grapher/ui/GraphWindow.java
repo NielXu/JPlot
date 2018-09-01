@@ -91,7 +91,7 @@ public class GraphWindow{
 	 */
 	public BufferedImage get_img() {
 		if(img == null) {
-			img = new BufferedImage(config.size, config.size, BufferedImage.TYPE_INT_RGB);
+			img = new BufferedImage(config.width, config.height, BufferedImage.TYPE_INT_RGB);
 			panel.paint(img.createGraphics());
 		}
 		return img;
