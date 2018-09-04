@@ -87,7 +87,7 @@ public abstract class GraphComponent {
 		Graphics2D g2d = (Graphics2D)g;
 		AffineTransform transform = g2d.getTransform();
 		transform_to_origin(g2d);
-		g2d.setColor(config.func_color);
+		g2d.setColor(config.func_color); 
 		// Iterate and render all points, connect them with Path
 		Point[] exp_pts = e.getGraphPoints(config.x_min, config.x_max, config.density);
 		Path2D path = new Path2D.Float();

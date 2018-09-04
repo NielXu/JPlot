@@ -86,6 +86,15 @@ public class GraphWindow{
 	}
 	
 	/**
+	 * Return a status that represents if the panel is
+	 * ready to be saved as image.
+	 * @return True if ready, false otherwise
+	 */
+	public boolean ready() {
+		return panel != null;
+	}
+	
+	/**
 	 * Get the image that saves everything painted on the graph
 	 * @return Image
 	 */

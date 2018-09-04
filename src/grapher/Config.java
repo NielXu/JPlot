@@ -60,13 +60,13 @@ public class Config {
 	public Color func_color = Color.BLUE;
 	
 	/**The background color of the grapher by default, can be modified**/
-	public Color background_color = Color.BLACK;
+	public Color background_color = Color.WHITE;
 	
 	/**The grid color of the grapher by default, can be modified**/
 	public Color grid_color = Color.DARK_GRAY;
 	
 	/**The axis color of the grapher by default, can be modified**/
-	public Color axis_color = Color.WHITE;
+	public Color axis_color = Color.BLACK;
 	
 	/**The unit color on axis by default, can be modified**/
 	public Color unit_color = Color.RED;
@@ -75,7 +75,7 @@ public class Config {
 	public Color point_color = Color.YELLOW;
 	
 	/**The color of the numbers on axises, can be modified**/
-	public Color number_color = Color.CYAN;
+	public Color number_color = Color.BLACK;
 	
 	/**The color of the cursor location font, can be modified**/
 	public Color cursorlocation_color = Color.PINK;

@@ -31,7 +31,7 @@ public class Demo {
 		/*
 		 * Example of drawing points on Grapher 
 		 */
-		//pointsGrapher().show();
+		pointsGrapher().show();
 		
 		/*
 		 * Example of drawing points and functions on a same graph
@@ -41,7 +41,7 @@ public class Demo {
 		/*
 		 * Just an example 
 		 */
-		beautifulGrapher().show();
+		// beautifulGrapher().show();
 		
 		/*
 		 * Show the difference between high quality and low quality
@@ -58,7 +58,7 @@ public class Demo {
 	public static Grapher simpleGrapher() {
 		Grapher g = new Grapher();
 		Expression e1 = new Expression("x^(1/2)",	// Create Expression with given color
-				Color.YELLOW);
+				Color.RED);
 		Expression e2 = new Expression("x^2");		// Create Expression with default color
 		g.add_exp(e1, e2);							// Add multiple expressions in one line
 		return g;
@@ -70,8 +70,8 @@ public class Demo {
 	 */
 	public static Grapher customGrapher() {
 		Config con = new Config();			// Create custom Config, all values are public for direct access
-		con.width = 800;
-		con.height = 600;
+		// con.width = 800;
+		// con.height = 600;
 		con.background_color = Color.WHITE;	// Set background color to white
 		con.axis_color = Color.BLACK;		// Set axis color to black
 		con.show_grid = false;				// set show_grid=false to disable grid on graph
@@ -130,7 +130,7 @@ public class Demo {
 			new Point(-3, 9)
 		};
 		g.add_exp(e);
-		g.add_pts(p);
+		g.add_pts(Color.GREEN, p);
 		return g;
 	}
 	
@@ -139,8 +139,8 @@ public class Demo {
 	 */
 	public static Grapher beautifulGrapher() {
 		Config con = new Config();
-		con.width = 800;
-		con.height = 400;
+		// con.width = 800;
+		// con.height = 400;
 		con.show_unit = false;
 		con.show_grid = false;
 		con.x_min = -1;

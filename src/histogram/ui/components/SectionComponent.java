@@ -31,8 +31,9 @@ public class SectionComponent extends HistogramComponent{
 	@Override
 	public void render(Graphics g) {
 		for(int i=0;i<section.length;i++) {
-			if(section[i] != null)
+			if(section[i] != null) {
 				renderSection(g, section[i], starting[0] + i * xscale);
+			}
 		}
 	}
 	
@@ -47,10 +48,10 @@ public class SectionComponent extends HistogramComponent{
 			if(!categories.contains(c)) {
 				categories.add(c);
 			}
-			g2d.setColor(c.getColor());
 			double value = b.getValue();
 			Rectangle2D rect = new Rectangle2D.Double(startx + i * ratio, starting[1] - value * yscale,
 													  ratio, value*yscale);
+			g2d.setColor(c.getColor());
 			g2d.fill(rect);
 			if(config.show_border) {
 				g2d.setColor(Color.BLACK);
