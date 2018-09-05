@@ -20,13 +20,13 @@ public class HistogramWindow {
 	private BufferedImage img;
 	
 	/**JFrame window**/
-	private JFrame frame;
+	protected JFrame frame;
 	
 	/**The configuration**/
-	private Config config;
+	protected Config config;
 	
 	/**The Jpanel that contains the graph**/
-	private HistogramPanel histogrampanel;
+	protected HistogramPanel histogrampanel;
 	
 	/**index of vertical bar**/
 	private int index;
@@ -44,7 +44,7 @@ public class HistogramWindow {
 		frame.setResizable(false);
 		this.config = config;
 		index = 0;
-		sections = new Section[config.x_unit];	// sttaic length, for future exception mangement
+		sections = new Section[config.xunit.length];	// static length, for future exception mangement
 	}	
 	
 	/**

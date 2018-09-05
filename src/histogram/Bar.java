@@ -3,7 +3,6 @@ package histogram;
 /**
  * A vertical bar in the histogram. Each bar should have a category that
  * it belongs to.
- * most side.
  * @author Daniel Xu
  *
  */
@@ -17,7 +16,7 @@ public class Bar {
 
 	/**
 	 * Construct a bar with given value and default bar color
-	 * @param d value, which means how many y unit this bar contains, can be a double
+	 * @param d value, which means how many y unit this bar occupy, can be a double
 	 * @param category The category that this bar belong to
 	 */
 	public Bar(double d, Category category) {

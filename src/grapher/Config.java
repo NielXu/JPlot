@@ -15,7 +15,7 @@ import java.text.DecimalFormat;
 public class Config {
 	
 	/**The title of the window, cannot be modified**/
-	public final String TITLE = "Grapher v0.1 test";
+	public final String TITLE = "JPlot v0.1";
 	
 	/**The x-axis of the graph window, default is -1, which means the center of the screen, can be modified**/
 	public int graph_location_x = -1;

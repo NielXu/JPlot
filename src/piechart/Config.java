@@ -11,8 +11,8 @@ import java.awt.Font;
  */
 public class Config {
 
-	/**The title of the window, this is different from title and cannot be modified**/
-	public final String TITLE = "Grapher v0.1";
+	/**The title of the window, cannot be modified**/
+	public final String TITLE = "JPlot v0.1";
 	
 	/**The label that displays on top of the PieChart represents the title**/
 	public String title = "PieChart";

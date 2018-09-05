@@ -35,14 +35,11 @@ public class Config {
 	/**The height of the graph**/
 	public int height = 600;
 	
-	/**How many units on the x axis**/
-	public int x_unit = 5;
+	/**The thickness of the trend line**/
+	public int trend_thickness = 5;
 	
-	/**how many units on the y axis**/
-	public int y_unit = 5;
-	
-	/**The title of the window, this is different from title and cannot be modified**/
-	public final String TITLE = "Grapher v0.1";
+	/**The title of the window, cannot be modified**/
+	public final String TITLE = "JPlot v0.1";
 	
 	/**The x axis label**/
 	public String xlabel = "x label";
@@ -83,7 +80,7 @@ public class Config {
 	/**The color of the bar number**/
 	public Color barnumber_color = Color.BLACK;
 	
-	/**The color of the category label**/
+	/**The color of the category label, this also controls label on TrendGraph**/
 	public Color categorylabel_color = Color.BLACK;
 	
 	/**The font that used by histogram title, cannot be modified for now**/
@@ -104,7 +101,7 @@ public class Config {
 	/**The font that used by bar number, cannot be modified for now**/
 	public final Font barnumber_font = new Font("Helvetica", Font.BOLD, 12);
 	
-	/**The font that used by category label, cannot be modified for now**/
+	/**The font that used by category label, cannot be modified for now, this also controls label on TrendGraph**/
 	public final Font category_font = new Font("Helvetica", Font.BOLD, 12);
 	
 	/**Show vertical grid on xaxis**/
@@ -124,6 +121,12 @@ public class Config {
 	
 	/**Show category on the top right corner**/
 	public boolean show_category = true;
+	
+	/**Show a dot of trend on each x unit**/
+	public boolean show_trenddot = true;
+	
+	/**Show trend value on top of the line**/
+	public boolean show_trendnumber = true;
 	
 	/**Decimal Format of numbers on bar**/
 	public DecimalFormat barnumber_decimal = new DecimalFormat("#0.00");

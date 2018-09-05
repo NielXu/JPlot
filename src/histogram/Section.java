@@ -13,8 +13,19 @@ public class Section {
 
 	private List<Bar> bars;
 	
+	/**
+	 * Construct section with no bar by default
+	 */
 	public Section() {
 		bars = new ArrayList<Bar>();
+	}
+	
+	/**
+	 * Construct section by providing list of bars in one section
+	 * @param bars List of {@link histogram.Bar}
+	 */
+	public Section(List<Bar> bars) {
+		this.bars = bars;
 	}
 	
 	/**

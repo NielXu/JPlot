@@ -5,9 +5,11 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.List;
 
 import histogram.Config;
 import histogram.Section;
+import histogram.trend.Trend;
 
 /**
  * HistogramComponent should be implemented by all components that added
@@ -37,8 +39,8 @@ public abstract class HistogramComponent {
 	
 	// Initialize some important variables
 	private void init() {
-		xunit = new double[config.x_unit];
-		yunit = new double[config.y_unit];
+		xunit = new double[config.xunit.length];
+		yunit = new double[config.yunit.length];
 		int xrange = (config.width - 75) - 100;
 		int yrange = (config.height - 100 - 100);
 		xscale = xrange / xunit.length;
@@ -60,6 +62,15 @@ public abstract class HistogramComponent {
 	 * @return HistogramComponent instance itself
 	 */
 	public HistogramComponent addSection(Section[] section) {
+		return this;
+	}
+	
+	/**
+	 * Add trends to the component
+	 * @param trend list of {@link histogram.trend.Trend}
+	 * @return HistogramComponent instance itself
+	 */
+	public HistogramComponent addTrend(List<Trend> trend) {
 		return this;
 	}
 	
