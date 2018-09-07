@@ -18,9 +18,6 @@ public class Expression {
 	/**Function color**/
 	private Color func_color;
 	
-	/**Points for Grapher**/
-	private Point[] graphPoint;
-	
 	/**
 	 * Setup the expression by providing it in string format. The expression has some
 	 * restrictions(see {@link util.Evaluator#evaluate(String)}) and must follow the following rules:
@@ -105,46 +102,6 @@ public class Expression {
 			}
 		}
 		return pts;
-	}
-	
-	/**
-	 * Similar with {@link grapher.util.Expression#getPoints(int, int, int)},
-	 * this method also evaluate points between min and max. However, this
-	 * method is for the {@link grapher.Grapher} to use since it only evaluates values once and
-	 * then store it locally, call this method again will not affect the
-	 * return value. Therefore, be caerful when calling this method, usually, 
-	 * one should not call this method directly, <b>it should only be accessed by
-	 * Grapher</b>
-	 * @param min The min value on x axis, must be an integer
-	 * @param max The max value on x axis, must be an integer
-	 * @param density The number of points that will be evaluated between two units
-	 * @return An array that contains points of a function in range(min, max), the length
-	 * will be (max-min)*density
-	 */
-	public Point[] getGraphPoints(int min, int max, int density) {
-		if(graphPoint == null) {
-			// The number of units for x-axis and y-axis
-			int unit = max - min;
-			density = density * unit;
-			graphPoint = new Point[density];
-			float step = unit / (float)density;
-			// Setup points
-			for(int i=0;i<density;i++){
-				float x = min + i * step;
-				Point p = null;
-				try {
-					p = new Point();
-					p.x = x;
-					p.y = Evaluator.evaluate(exp.replace("x", "("+String.valueOf(x)+")"));
-					graphPoint[i] = p;
-				}
-				catch(UnsupportedOperationException e) {
-					p = new InvalidPoint(x);
-					graphPoint[i] = p;
-				}
-			}
-		}
-		return graphPoint;
 	}
 	
 	/**

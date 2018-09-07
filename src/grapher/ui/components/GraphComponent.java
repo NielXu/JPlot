@@ -11,6 +11,7 @@ import grapher.util.Buffer;
 import grapher.util.Expression;
 import grapher.util.InvalidPoint;
 import grapher.util.Point;
+import util.Evaluator;
 
 /**
  * GraphComponent is the abstract parent class that every components should extends. It includes some
@@ -78,6 +79,41 @@ public abstract class GraphComponent {
 	}
 	
 	/**
+	 * Similar with {@link grapher.util.Expression#getPoints(int, int, int)},
+	 * this method also evaluate points between min and max. However, this
+	 * method is for the {@link grapher.Grapher} to use
+	 * @param min The min value on x axis, must be an integer
+	 * @param max The max value on x axis, must be an integer
+	 * @param density The number of points that will be evaluated between two units
+	 * @return An array that contains points of a function in range(min, max), the length
+	 * will be (max-min)*density
+	 */
+	protected Point[] points_inrange(Expression exp, int min, int max, int density) {
+		Point[] pts;
+		// The number of units for x-axis and y-axis
+		int unit = max - min;
+		density = density * unit;
+		pts = new Point[density];
+		float step = unit / (float)density;
+		// Setup points
+		for(int i=0;i<density;i++){
+			float x = min + i * step;
+			Point p = null;
+			try {
+				p = new Point();
+				p.x = x;
+				p.y = Evaluator.evaluate(exp.getExpression().replace("x", "("+String.valueOf(x)+")"));
+				pts[i] = p;
+			}
+			catch(UnsupportedOperationException e) {
+				p = new InvalidPoint(x);
+				pts[i] = p;
+			}
+		}
+		return pts;
+	}
+	
+	/**
 	 * Render a expression on the graph
 	 * @param g Graphics
 	 * @param e Expression {@link grapher.util.Expression}
@@ -89,13 +125,13 @@ public abstract class GraphComponent {
 		transform_to_origin(g2d);
 		g2d.setColor(config.func_color); 
 		// Iterate and render all points, connect them with Path
-		Point[] exp_pts = e.getGraphPoints(config.x_min, config.x_max, config.density);
+		Point[] exp_pts = points_inrange(e, config.x_min, config.x_max, config.density);
 		Path2D path = new Path2D.Float();
 		for(int j=0;j<exp_pts.length;j++){
 			Point p = exp_pts[j];
 			if(!(p instanceof InvalidPoint)) {
 				double[] trans = translate(p.x, p.y);
-				if(j==0) path.moveTo(trans[0], trans[1]);
+				if(path.getCurrentPoint() == null) path.moveTo(trans[0], trans[1]);
 				else path.lineTo(trans[0], trans[1]);
 			}
 		}

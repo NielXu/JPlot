@@ -31,7 +31,7 @@ public class Demo {
 		/*
 		 * Example of drawing points on Grapher 
 		 */
-		pointsGrapher().show();
+		//pointsGrapher().show();
 		
 		/*
 		 * Example of drawing points and functions on a same graph
@@ -49,6 +49,11 @@ public class Demo {
 		//Grapher[] graphers = qualityCompare();
 		//graphers[0].show();
 		//graphers[1].show();
+		
+		/*
+		 * Example of drawing implicit function manually
+		 */
+		//implicitGraph().show();
 	}
 	
 	/**
@@ -194,5 +199,18 @@ public class Demo {
 		Grapher g2 = new Grapher(c2);
 		g2.add_exp(new Expression("sin(x)"));
 		return new Grapher[] {g1, g2};
+	}
+	
+	/**
+	 * Example of drawing implicit function by combining two separate
+	 * functions
+	 */
+	public static Grapher implicitGraph() {
+		Grapher g = new Grapher();
+		Expression e1 = new Expression("(16-x^2)^(1/2)", Color.ORANGE);
+		System.out.println(e1.getPoint(2));
+		Expression e2 = new Expression("-(16-x^2)^(1/2)", Color.BLUE);
+		g.add_exp(e1, e2);
+		return g;
 	}
 }
