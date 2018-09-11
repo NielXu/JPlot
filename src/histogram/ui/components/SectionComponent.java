@@ -70,7 +70,7 @@ public class SectionComponent extends HistogramComponent{
 	}
 	
 	private void render_category(Graphics g, List<Category> cs) {
-		int startx = config.width - 350;
+		int startx = config.width - config.width*1/3;
 		int starty = 20;
 		int offset = 0;
 		for(int i=0;i<cs.size();i++) {

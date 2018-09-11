@@ -1,5 +1,6 @@
 package histogram.trend.ui;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +18,8 @@ import histogram.ui.HistogramWindow;
  */
 public class TrendWindow extends HistogramWindow{
 	
+	private BufferedImage img;
+	
 	private JPanel trendPanel;
 
 	private List<Trend> trends;
@@ -28,6 +31,15 @@ public class TrendWindow extends HistogramWindow{
 	
 	public void add_trend(Trend...trends) {
 		this.trends.addAll(Arrays.asList(trends));
+	}
+	
+	@Override
+	public BufferedImage get_img() {
+		if(img == null) {
+			img = new BufferedImage(config.width, config.height, BufferedImage.TYPE_INT_RGB);
+			trendPanel.paint(img.createGraphics());
+		}
+		return img;
 	}
 	
 	@Override
