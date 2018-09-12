@@ -72,15 +72,15 @@ public abstract class AbstractGraphTool implements Exportable{
 	public void show() {
 		frame.add(getGraphPanel());
 		frame.pack();
-		if(config.getGraphX() == -1 && config.getGraphY() == -1) frame.setLocationRelativeTo(null);
-		else frame.setLocation(config.getGraphX(), config.getGraphY());
+		if(config.graph_location_x == -1 && config.graph_location_y == -1) frame.setLocationRelativeTo(null);
+		else frame.setLocation(config.graph_location_x, config.graph_location_y);
 		frame.setVisible(true);
 	}
 	
 	@Override
 	public void save_img(String name, String dir, String type) {
 		if(img == null) {
-			img = new BufferedImage(config.getWidth(), config.getHeight(), BufferedImage.TYPE_INT_RGB);
+			img = new BufferedImage(config.width, config.height, BufferedImage.TYPE_INT_RGB);
 			getGraphPanel().paint(img.createGraphics());
 		}
 		try{

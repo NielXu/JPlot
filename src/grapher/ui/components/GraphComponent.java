@@ -6,6 +6,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 import java.util.List;
 
+import common.Renderable;
 import grapher.Config;
 import grapher.util.Buffer;
 import grapher.util.Expression;
@@ -21,7 +22,7 @@ import util.Evaluator;
  * @author Daniel Xu
  *
  */
-public abstract class GraphComponent {
+public abstract class GraphComponent implements Renderable{
 
 	/**The Grapher configuration**/
 	protected Config config;
@@ -160,11 +161,5 @@ public abstract class GraphComponent {
 	public GraphComponent add_pts(List<Buffer> l) {
 		return this;
 	}
-	
-	/**
-	 * Render the component on the Panel
-	 * @param g Graphics g
-	 */
-	public abstract void render(Graphics g);
 
 }

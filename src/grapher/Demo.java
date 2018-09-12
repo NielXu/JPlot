@@ -41,7 +41,7 @@ public class Demo {
 		/*
 		 * Just an example 
 		 */
-		// beautifulGrapher().show();
+		//beautifulGrapher().show();
 		
 		/*
 		 * Show the difference between high quality and low quality
@@ -75,9 +75,8 @@ public class Demo {
 	 */
 	public static Grapher customGrapher() {
 		Config con = new Config();			// Create custom Config, all values are public for direct access
-		// con.width = 800;
-		// con.height = 600;
-		con.background_color = Color.WHITE;	// Set background color to white
+		con.show_cursorxy = true;			// Show cursor location on top left
+		con.show_expressions = false;		// Not showing expressions
 		con.axis_color = Color.BLACK;		// Set axis color to black
 		con.show_grid = false;				// set show_grid=false to disable grid on graph
 		con.show_unit = false;				// set show_unit=false to disable unit on graph
@@ -208,7 +207,6 @@ public class Demo {
 	public static Grapher implicitGraph() {
 		Grapher g = new Grapher();
 		Expression e1 = new Expression("(16-x^2)^(1/2)", Color.ORANGE);
-		System.out.println(e1.getPoint(2));
 		Expression e2 = new Expression("-(16-x^2)^(1/2)", Color.BLUE);
 		g.add_exp(e1, e2);
 		return g;

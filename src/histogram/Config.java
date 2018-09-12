@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.text.DecimalFormat;
 
+import common.BaseConfig;
+
 /**
  * The configuration of the histogram. Similar to Grapher.Config, this
  * config class also many variables that can be customized, and
@@ -12,7 +14,7 @@ import java.text.DecimalFormat;
  * @author Daniel Xu
  *
  */
-public class Config {
+public class Config extends BaseConfig{
 	
 	/**The string array that represents the x unit on the x axis
 	 * the length of the array should be equal to x_max - x_min**/
@@ -22,12 +24,6 @@ public class Config {
 	 * the length of the array should be equal to y_max - y_min.
 	 * <b>The difference between each two numbers should be the same</b>**/
 	public double[] yunit = new double[] {10, 20, 30, 40, 50};
-	
-	/**The x-axis of the graph window, default is -1, which means the center of the screen, can be modified**/
-	public int graph_location_x = -1;
-	
-	/**The y-axis of the graph window, default is -1, which means the center of the screen, can be modified**/
-	public int graph_location_y = -1;
 
 	/**The width of the graph**/
 	public int width = 900;
@@ -37,9 +33,6 @@ public class Config {
 	
 	/**The thickness of the trend line**/
 	public int trend_thickness = 5;
-	
-	/**The title of the window, cannot be modified**/
-	public final String TITLE = "JPlot v0.1";
 	
 	/**The x axis label**/
 	public String xlabel = "x label";

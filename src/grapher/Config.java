@@ -3,6 +3,8 @@ package grapher;
 import java.awt.Color;
 import java.text.DecimalFormat;
 
+import common.BaseConfig;
+
 /**
  * The Configutaion of the grapher. Each grapher has one unique
  * config object, and they donot affect each other. That means, modifying
@@ -12,22 +14,7 @@ import java.text.DecimalFormat;
  * @author danielxu
  *
  */
-public class Config {
-	
-	/**The title of the window, cannot be modified**/
-	public final String TITLE = "JPlot v0.1";
-	
-	/**The x-axis of the graph window, default is -1, which means the center of the screen, can be modified**/
-	public int graph_location_x = -1;
-	
-	/**The y-axis of the graph window, default is -1, which means the center of the screen, can be modified**/
-	public int graph_location_y = -1;
-	
-	/**Width of the graph(Not window)**/
-	public int width = 600;
-	
-	/**Height of the graph(Not window)**/
-	public int height = 600;
+public class Config extends BaseConfig{
 	
 	/**Max value on x axis**/
 	public int x_max = 10;
@@ -41,12 +28,6 @@ public class Config {
 	/**Min value on y axis**/
 	public int y_min = -10;
 	
-	/**The max unit in the axises, for both x and y, can be modified**/
-	// public int max_unit = 10;
-	
-	/**The min unit in the axises, for both x and y, can be modified**/
-	// public int min_unit = -10;
-	
 	/**The density of the points represents that how many points will be
 	 * evaluated between one unit, the more points being evaluated, t
 	 * he smoother the graph will be, but it will cause longer loading time.
@@ -58,9 +39,6 @@ public class Config {
 	
 	/**The default function color on the graph, if no specific color is given in Expression, grapher will use this color**/
 	public Color func_color = Color.BLUE;
-	
-	/**The background color of the grapher by default, can be modified**/
-	public Color background_color = Color.WHITE;
 	
 	/**The grid color of the grapher by default, can be modified**/
 	public Color grid_color = Color.DARK_GRAY;
@@ -106,9 +84,6 @@ public class Config {
 	
 	/**Show expressions on top left corner**/
 	public boolean show_expressions = true;
-	
-	/**Allow ANTIALIASING for both text and lines on graph**/
-	public boolean high_quality = true;
 	
 	/**The DecimalFormat that will be apply to cursorlocation x,y values. However, show_cursorxy need to be
 	 * enabled first in order to apply this configuration**/

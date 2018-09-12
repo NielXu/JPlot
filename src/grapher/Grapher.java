@@ -1,15 +1,16 @@
 package grapher;
 
 import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
-import grapher.exceptions.ImageSavedException;
+import common.AbstractGraphTool;
 import grapher.exceptions.SizeOutOfRangeException;
-import grapher.exceptions.UnsupportedTypeException;
-import grapher.ui.GraphWindow;
+import grapher.ui.GraphPanel;
+import grapher.util.Buffer;
 import grapher.util.Expression;
 import grapher.util.Point;
 import util.ExceptionHandler;
@@ -19,10 +20,11 @@ import util.ExceptionHandler;
  * @author danielxu
  *
  */
-public class Grapher {
-
-	/**The graph window**/
-	private GraphWindow graph;
+public class Grapher extends AbstractGraphTool{
+	
+	private List<Buffer> points_buffer;
+	private List<Expression> expressions;
+	private JPanel graphPanel;
 	
 	/**Configuration**/
 	private Config config;
@@ -39,11 +41,13 @@ public class Grapher {
 	 * @param config The Config object
 	 */
 	public Grapher(Config config){
+		super(config);
 		if(ExceptionHandler.isnull(config)) {
 			throw new NullPointerException("Configuration cannot be null");
 		}
-		graph = new GraphWindow(config);
 		this.config = config;
+		points_buffer = new ArrayList<Buffer>();
+		expressions = new ArrayList<Expression>();
 	}
 	
 	/**
@@ -60,9 +64,7 @@ public class Grapher {
 		else if(check_result != ExceptionHandler.VALID_ARRAY) {
 			throw new NullPointerException("Expression at index " + check_result + " cannot be null");
 		}
-		for(Expression e: exp) {
-			graph.buffer_exp(e);
-		}
+		expressions.addAll(Arrays.asList(exp));
 	}
 	
 	/**
@@ -119,47 +121,14 @@ public class Grapher {
 		else if(check_result != ExceptionHandler.VALID_ARRAY) {
 			throw new NullPointerException("Point at index " + check_result + " cannot be null");
 		}
-		graph.buffer_pts(points, c, size);
+		points_buffer.add(new Buffer(points, c, size));
 	}
-	
-	/**
-	 * Save the graph on the grapher as the given image type.
-	 * This method only work after the show() method is called.
-	 * @param name The name of the image file
-	 * @param dir The directory that the image will be saved at
-	 * @param type The image type, support jpg, png
-	 */
-	public void save_img(String name, String dir, String type) {
-		if(ExceptionHandler.isnull(name)) {
-			throw new NullPointerException("File name cannot be null");
+
+	@Override
+	protected JPanel getGraphPanel() {
+		if(graphPanel == null) {
+			graphPanel = new GraphPanel(points_buffer, expressions, config);
 		}
-		if(ExceptionHandler.isnull(dir)) {
-			throw new NullPointerException("Directory cannot be null");
-		}
-		if(ExceptionHandler.isnull(type)) {
-			throw new NullPointerException("File type cannot be null");
-		}
-		if(!ExceptionHandler.isequal(type, new Object[] {"png", "jpg"})) {
-			throw new UnsupportedTypeException("Image type " + type + " not supported");
-		}
-		if(!graph.ready()) {
-			throw new ImageSavedException("Cannot saved image before show");
-		}
-		BufferedImage img = graph.get_img();
-		try{
-			File f = new File(dir + "\\" + name + "." + type);
-			f.createNewFile();
-			ImageIO.write(img, type, f);
-		} 
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * Show up the graph on the screen. The graph is invisible by default
-	 */
-	public void show(){
-		graph.show();
+		return graphPanel;
 	}
 }
