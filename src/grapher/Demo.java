@@ -46,9 +46,9 @@ public class Demo {
 		/*
 		 * Show the difference between high quality and low quality
 		 */
-		//Grapher[] graphers = qualityCompare();
-		//graphers[0].show();
-		//graphers[1].show();
+		// Grapher[] graphers = qualityCompare();
+		// graphers[0].show();
+		// graphers[1].show();
 		
 		/*
 		 * Example of drawing implicit function manually
