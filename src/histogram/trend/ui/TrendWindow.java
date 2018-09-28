@@ -7,16 +7,16 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import common.AbstractGraphTool;
 import histogram.Config;
 import histogram.trend.Trend;
-import histogram.ui.HistogramWindow;
 
 /**
  * Provide window for trendgraph, inherits {@link histogram.ui.HistogramWindow}
  * @author Daniel Xu
  *
  */
-public class TrendWindow extends HistogramWindow{
+public class TrendWindow extends AbstractGraphTool{
 	
 	private BufferedImage img;
 	

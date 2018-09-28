@@ -16,23 +16,23 @@ import histogram.Section;
 public class SectionComponent extends HistogramComponent{
 
 	/**Sections**/
-	private Section[] section;
+	private List<Section> section;
 	
 	public SectionComponent(Config config) {
 		super(config);
 	}
 	
 	@Override
-	public HistogramComponent addSection(Section[] section) {
+	public HistogramComponent addSection(List<Section> section) {
 		this.section = section;
 		return this;
 	}
 
 	@Override
 	public void render(Graphics g) {
-		for(int i=0;i<section.length;i++) {
-			if(section[i] != null) {
-				renderSection(g, section[i], starting[0] + i * xscale);
+		for(int i=0;i<section.size();i++) {
+			if(section.get(i) != null) {
+				renderSection(g, section.get(i), starting[0] + i * xscale);
 			}
 		}
 	}

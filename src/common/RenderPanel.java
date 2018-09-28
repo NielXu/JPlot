@@ -37,7 +37,7 @@ public class RenderPanel extends JPanel{
 	 * also an arraylist that contains renderable objects is initialized
 	 * @param config Base configuration {@link common.BaseConfig}
 	 */
-	public RenderPanel(BaseConfig config) {
+	public RenderPanel(final BaseConfig config) {
 		super();
 		this.config = config;
 		setPreferredSize(new Dimension(config.width, config.height));

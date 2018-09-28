@@ -19,7 +19,7 @@ public class Demo {
 		/*
 		 * Example of basic histogram
 		 */
-		//basichist().show();
+		basichist().show();
 		
 		/*
 		 * Example of custom histogram

@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.List;
 
+import common.Renderable;
 import histogram.Config;
 import histogram.Section;
 import histogram.trend.Trend;
@@ -18,7 +19,7 @@ import histogram.trend.Trend;
  * @author Daniel Xu
  *
  */
-public abstract class HistogramComponent {
+public abstract class HistogramComponent implements Renderable{
 
 	/**Configuration**/
 	protected Config config;
@@ -61,7 +62,7 @@ public abstract class HistogramComponent {
 	 * @param section Section {@link histogram.Section}
 	 * @return HistogramComponent instance itself
 	 */
-	public HistogramComponent addSection(Section[] section) {
+	public HistogramComponent addSection(List<Section> section) {
 		return this;
 	}
 	
