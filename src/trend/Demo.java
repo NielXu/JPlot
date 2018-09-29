@@ -2,6 +2,7 @@ package trend;
 
 import java.awt.Color;
 
+import histogram.Category;
 import util.Randomizer;
 
 public class Demo {
@@ -23,6 +24,9 @@ public class Demo {
 	 * {@link util.Randomizer} is used here to generate random values
 	 */
 	public static TrendGraph basictrend() {
+		Category c1 = new Category("APPLE", Color.RED);
+		Category c2 = new Category("ORANGE", Color.ORANGE);
+		Category c3 = new Category("BANANA", Color.YELLOW);
 		TrendGraph g = new TrendGraph();						// Create TrendGraph with default configuration
 		double[] data1 = new double[5];							// Data represents the number of yunit that an
 		double[] data2 = new double[5];							// item occupies through x axis
@@ -32,9 +36,9 @@ public class Demo {
 			data2[i] = Randomizer.double_rand(2.5, 3.6);
 			data3[i] = Randomizer.double_rand(3.8, 5);
 		}
-		Trend t1 = new Trend("APPLE", Color.RED, data1);		// Setting up trend with name 'APPLE', color RED and data1
-		Trend t2 = new Trend("ORANGE", Color.ORANGE, data2);	// Setting up trend with name 'ORANGE', color ORANGE and data2
-		Trend t3 = new Trend("BANANA", Color.YELLOW, data3);	// Setting up trend with name 'BANANA', color BANANA and data3
+		Trend t1 = new Trend(c1, data1);		// Setting up trend with name 'APPLE', color RED and data1
+		Trend t2 = new Trend(c2, data2);	// Setting up trend with name 'ORANGE', color ORANGE and data2
+		Trend t3 = new Trend(c3, data3);	// Setting up trend with name 'BANANA', color BANANA and data3
 		g.add_trend(t1, t2, t3);								// Add trends to the TrendGraph
 		return g;
 	}
@@ -44,6 +48,9 @@ public class Demo {
 	 * {@link util.Randomizer} is used here to generate random values
 	 */
 	public static TrendGraph customtrend() {
+		Category c1 = new Category("APPLE", Color.RED);
+		Category c2 = new Category("ORANGE", Color.ORANGE);
+		Category c3 = new Category("BANANA", Color.YELLOW);
 		Config c = new Config();								// Create custom configuration, TrendGraph shares the
 																// same Config class with Histogram
 		c.yunit = new double[] {1000, 2000, 3000, 4000, 5000};	// Setup y unit, must be number
@@ -61,9 +68,9 @@ public class Demo {
 			data2[i] = Randomizer.double_rand(2.5, 3.6);
 			data3[i] = Randomizer.double_rand(3.8, 5);
 		}
-		Trend t1 = new Trend("APPLE", Color.RED, data1);		// Setting up trend with name 'APPLE', color RED and data1
-		Trend t2 = new Trend("ORANGE", Color.ORANGE, data2);	// Setting up trend with name 'ORANGE', color ORANGE and data2
-		Trend t3 = new Trend("BANANA", Color.YELLOW, data3);	// Setting up trend with name 'BANANA', color BANANA and data3
+		Trend t1 = new Trend(c1, data1);		// Setting up trend with name 'APPLE', color RED and data1
+		Trend t2 = new Trend(c2, data2);	// Setting up trend with name 'ORANGE', color ORANGE and data2
+		Trend t3 = new Trend(c3, data3);	// Setting up trend with name 'BANANA', color BANANA and data3
 		g.add_trend(t1, t2, t3);								// Add trends to the TrendGraph
 		return g;
 	}

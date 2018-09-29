@@ -1,6 +1,6 @@
 package trend;
 
-import java.awt.Color;
+import histogram.Category;
 
 /**
  * Trend represent the trend of one single data on the trendgraph and each
@@ -10,39 +10,22 @@ import java.awt.Color;
  */
 public class Trend {
 	
-	/**Color**/
-	private Color c;
+	/**Category that this trend belongs to**/
+	private Category category;
 	
 	/**Values**/
 	private double[] val;
-	
-	/**Name**/
-	private String name;
 
 	/**
 	 * Construct the Trend with given color and values. The length
 	 * of the value array should be equal to the length of
 	 * <code>Config.xunit</code>
-	 * @param name Name of the data
-	 * @param c The color represents the Trend
+	 * @category The category that this trend belongs to
 	 * @param val Values of the trend, start from left to right
 	 */
-	public Trend(String name, Color c, double...val) {
-		this.c = c;
+	public Trend(Category c, double...val) {
+		this.category = c;
 		this.val = val;
-		this.name = name;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	/**
-	 * Get the color of the trend line
-	 * @return Color of the trend line
-	 */
-	public Color getColor() {
-		return c;
 	}
 	
 	/**
@@ -51,5 +34,13 @@ public class Trend {
 	 */
 	public double[] getVal() {
 		return val;
+	}
+	
+	/**
+	 * Get the category of this trend
+	 * @return category of this trend
+	 */
+	public Category getCategory() {
+		return category;
 	}
 }

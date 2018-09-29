@@ -8,6 +8,7 @@ import java.awt.Stroke;
 import java.awt.geom.Path2D;
 import java.util.List;
 
+import histogram.Category;
 import histogram.Config;
 import histogram.ui.components.HistogramComponent;
 import trend.Trend;
@@ -39,6 +40,7 @@ public class TrendComponent extends HistogramComponent{
 	}
 
 	private void renderTrend(Graphics g, Trend t) {
+		Category c = t.getCategory();
 		double[] vals = t.getVal();
 		Path2D path = new Path2D.Double();
 		for(int i=0;i<vals.length;i++) {
@@ -47,14 +49,14 @@ public class TrendComponent extends HistogramComponent{
 			double y = starting[1] - val * yscale;
 			int tness = config.trend_thickness;
 			if(config.show_trenddot) {
-				g.setColor(t.getColor());
+				g.setColor(c.getColor());
 				g.fillOval((int)x-tness, (int)y-tness, tness*2, tness*2);
 			}
 			if(i == 0) path.moveTo(x, y);
 			else path.lineTo(x, y);
 		}
 		Graphics2D g2d = (Graphics2D)g;
-		g2d.setColor(t.getColor());
+		g2d.setColor(c.getColor());
 		Stroke origin = g2d.getStroke();
 		g2d.setStroke(new BasicStroke(config.trend_thickness));
 		g2d.draw(path);
@@ -68,27 +70,6 @@ public class TrendComponent extends HistogramComponent{
 				String text = config.barnumber_decimal.format(val * (config.yunit[1] - config.yunit[0]));
 				super.renderlabel(g, r, config.barnumber_font, text, config.barnumber_color);
 			}
-		}
-		if(config.show_category) {
-			renderlabel(g);
-		}
-	}
-	
-	private void renderlabel(Graphics g) {
-		int startx = config.width - 350;
-		int starty = 20;
-		int offset = 0;
-		for(int i=0;i<trends.size();i++) {
-			if(starty + i*20 + offset >= end_y[1]) {
-				startx += 125;
-				offset -= i*20;
-			}
-			Trend t = trends.get(i);
-			g.setColor(t.getColor());
-			g.fillRect(startx, starty + i*20 + offset, 20, 10);
-			g.setColor(config.categorylabel_color);
-			g.setFont(config.category_font);
-			g.drawString(t.getName(), startx+25, starty+i*20+10+offset);
 		}
 	}
 	

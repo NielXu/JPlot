@@ -17,14 +17,6 @@ public class Category {
 	private String name;
 	
 	/**
-	 * Get a default category with default bar color in config
-	 * @return A default category
-	 */
-	public static Category defaultCategory() {
-		return new Category("Default", new Config().bar_color);
-	}
-	
-	/**
 	 * Construct a new category, with name and color
 	 * @param name Name of the category
 	 * @param c The color represents the category
