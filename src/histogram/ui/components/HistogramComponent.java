@@ -10,7 +10,7 @@ import java.util.List;
 import common.Renderable;
 import histogram.Config;
 import histogram.Section;
-import histogram.trend.Trend;
+import trend.Trend;
 
 /**
  * HistogramComponent should be implemented by all components that added
@@ -68,7 +68,7 @@ public abstract class HistogramComponent implements Renderable{
 	
 	/**
 	 * Add trends to the component
-	 * @param trend list of {@link histogram.trend.Trend}
+	 * @param trend list of {@link trend.Trend}
 	 * @return HistogramComponent instance itself
 	 */
 	public HistogramComponent addTrend(List<Trend> trend) {

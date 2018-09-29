@@ -1,4 +1,4 @@
-package histogram.trend;
+package trend;
 
 import java.awt.Color;
 

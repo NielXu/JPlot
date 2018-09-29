@@ -1,4 +1,4 @@
-package histogram.trend.ui;
+package trend.ui.components;
 
 import java.awt.BasicStroke;
 import java.awt.Graphics;
@@ -9,8 +9,8 @@ import java.awt.geom.Path2D;
 import java.util.List;
 
 import histogram.Config;
-import histogram.trend.Trend;
 import histogram.ui.components.HistogramComponent;
+import trend.Trend;
 
 /**
  * TrendComponent is responsible for rendering trend lines

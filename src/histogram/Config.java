@@ -24,12 +24,6 @@ public class Config extends BaseConfig{
 	 * the length of the array should be equal to y_max - y_min.
 	 * <b>The difference between each two numbers should be the same</b>**/
 	public double[] yunit = new double[] {10, 20, 30, 40, 50};
-
-	/**The width of the graph**/
-	public int width = 900;
-	
-	/**The height of the graph**/
-	public int height = 600;
 	
 	/**The thickness of the trend line**/
 	public int trend_thickness = 5;

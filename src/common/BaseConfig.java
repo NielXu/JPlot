@@ -16,7 +16,7 @@ import java.awt.Color;
  * @author Daniel Xu
  *
  */
-public class BaseConfig {
+public class BaseConfig {	
 	
 	/**TITLE of the window, cannot be modified**/
 	public final String TITLE = "JPlot v0.2";
