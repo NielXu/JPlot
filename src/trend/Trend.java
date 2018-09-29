@@ -17,8 +17,8 @@ public class Trend {
 	private double[] val;
 
 	/**
-	 * Construct the Trend with given color and values. The length
-	 * of the value array should be equal to the length of
+	 * Construct the Trend with given category that this trend belongs to. 
+	 * The length of the value array should be equal to the length of
 	 * <code>Config.xunit</code>
 	 * @category The category that this trend belongs to
 	 * @param val Values of the trend, start from left to right
