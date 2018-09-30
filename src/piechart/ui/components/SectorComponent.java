@@ -59,7 +59,7 @@ public class SectorComponent extends PieComponent{
 				Sector s = sectors.get(i);
 				String name = s.getName() + " (%" + (s.getPercent() * 100) + ")";
 				int name_width = g.getFontMetrics().stringWidth(name);
-				if(startx + name_width >= config.size) {
+				if(startx + name_width >= config.width) {
 					startx = 15;
 					starty += 20;
 				}

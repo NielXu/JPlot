@@ -1,16 +1,26 @@
 package piechart;
 
-import piechart.ui.PieWindow;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.swing.JPanel;
+
+import common.AbstractGraphTool;
+import piechart.ui.PiePanel;
 
 /**
  * Pie is a tool to
  * @author Daniel Xu
  *
  */
-public class Pie {
+public class Pie extends AbstractGraphTool{
 	
-	/**The window that contains the graph**/
-	private PieWindow pie;
+	private List<Sector> sectors;
+	
+	private Config config;
+	
+	private JPanel panel;
 	
 	/**
 	 * Construct a PieChart with the default configuration
@@ -24,7 +34,9 @@ public class Pie {
 	 * @param config Configuration that applies on the PieChart
 	 */
 	public Pie(Config config) {
-		pie = new PieWindow(config);
+		super(config);
+		this.config = config;
+		sectors = new ArrayList<Sector>();
 	}
 	
 	/**
@@ -32,13 +44,14 @@ public class Pie {
 	 * @param sectors Sectors on the pie chart
 	 */
 	public void addSector(Sector... sectors) {
-		pie.addSector(sectors);
+		this.sectors.addAll(Arrays.asList(sectors));
 	}
-	
-	/**
-	 * Show up the pie chart on the screen
-	 */
-	public void show() {
-		pie.show();
+
+	@Override
+	protected JPanel getGraphPanel() {
+		if(panel == null) {
+			panel = new PiePanel(config, sectors);
+		}
+		return panel;
 	}
 }

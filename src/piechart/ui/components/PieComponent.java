@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.List;
 
+import common.Renderable;
 import piechart.Config;
 import piechart.Sector;
 
@@ -17,7 +18,7 @@ import piechart.Sector;
  * @author Daniel Xu
  *
  */
-public abstract class PieComponent {
+public abstract class PieComponent implements Renderable{
 	
 	/**Configuration**/
 	protected Config config;
@@ -49,10 +50,10 @@ public abstract class PieComponent {
 	private void init() {
 		title_x = 0;
 		title_y = 15;
-		chart_size = config.size * 2/3;
-		chart_x = config.size/2 - chart_size/2;
+		chart_size = config.width * 2/3;
+		chart_x = config.width/2 - chart_size/2;
 		chart_y = title_y + 35;
-		origin_x = config.size/2;
+		origin_x = config.width/2;
 		origin_y = chart_y + chart_size/2;
 	}
 	

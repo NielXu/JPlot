@@ -15,9 +15,6 @@ public class Config extends BaseConfig{
 	/**The label that displays on top of the PieChart represents the title**/
 	public String title = "PieChart";
 	
-	/**The size of the graph(Not the window), the graph will have same width and height**/
-	public int size = 500;
-	
 	/**Show sector name and percentage under the main chart**/
 	public boolean show_label = true;
 	

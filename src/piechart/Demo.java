@@ -19,7 +19,6 @@ public class Demo {
 		c.graph_location_x = 0;
 		c.graph_location_y = 0;
 		c.title = "Insert title here";
-		c.size = 500;
 		Pie p2 = new Pie(c);
 		// Add sectors
 		p2.addSector(
