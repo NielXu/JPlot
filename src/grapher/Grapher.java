@@ -159,6 +159,22 @@ public class Grapher extends AbstractGraphTool implements Convertible{
 
 	@Override
 	public void out(String location) {
-		
+		StringBuilder sb = new StringBuilder();
+		for(int i=0;i<expressions.size();i++) {
+			sb.append("y="+expressions.get(i).toString()+"\n");
+		}
+		for(int i=0;i<points_buffer.size();i++) {
+			Buffer b = points_buffer.get(i);
+			Point[] p = b.getPoints();
+			for(int j=0;j<p.length;j++) {
+				Point sp = p[j];
+				sb.append("("+sp.x+","+sp.y+")"+"\n");
+			}
+		}
+		try {
+			Files.write(Paths.get(location), sb.toString().getBytes());
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

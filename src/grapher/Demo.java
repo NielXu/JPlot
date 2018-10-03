@@ -60,6 +60,11 @@ public class Demo {
 		 * Example of reading text file and transform it to the function graph
 		 */
 		// readFileGrapher().show();
+		 
+		/*
+		 * Example of saving functions and points on graph to a txt file
+		 */
+		// outFileGrapher().show();
 	}
 
 	public static Grapher readFileGrapher() {
@@ -71,6 +76,14 @@ public class Demo {
 		Grapher g = new Grapher(config);
 		g.read("resources/jpfile.txt");		// The file that will be read
 											// Can be found under resources/ folder
+		return g;
+	}
+	
+	public static Grapher outFileGrapher() {
+		Grapher g = new Grapher();
+		g.add_exp(new Expression("e^x"));
+		g.add_pts(new Point(3,3), new Point(5,1));
+		g.out("resources/jpfile-out.txt");
 		return g;
 	}
 

@@ -16,8 +16,8 @@ public interface Convertible {
 	public void read(String file);
 	
 	/**
-	 * Output the formmated file and save it to the location
-	 * @param location The location that the file will be saved
+	 * Output the formmated file and save it to the given directory.
+	 * @param location The directory that the file will be saved
 	 */
 	public void out(String location);
 	
