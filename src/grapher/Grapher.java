@@ -1,6 +1,9 @@
 package grapher;
 
 import java.awt.Color;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,6 +11,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import common.AbstractGraphTool;
+import common.Convertible;
 import grapher.exceptions.SizeOutOfRangeException;
 import grapher.ui.GraphPanel;
 import grapher.util.Buffer;
@@ -20,7 +24,7 @@ import util.ExceptionHandler;
  * @author danielxu
  *
  */
-public class Grapher extends AbstractGraphTool{
+public class Grapher extends AbstractGraphTool implements Convertible{
 	
 	private List<Buffer> points_buffer;
 	private List<Expression> expressions;
@@ -130,5 +134,31 @@ public class Grapher extends AbstractGraphTool{
 			graphPanel = new GraphPanel(points_buffer, expressions, config);
 		}
 		return graphPanel;
+	}
+
+	@Override
+	public void read(String file) {
+		try {
+			List<String> lines = Files.readAllLines(Paths.get(file));
+			for(String line : lines) {
+				if(line.startsWith("y=")) {
+					add_exp(new Expression(line.replace("y=", "")));
+				}
+				else if(line.startsWith("(")) {
+					String[] loc = line.replaceAll("[()]", "").split(",");
+					Point p = new Point();
+					p.x = Double.parseDouble(loc[0]);
+					p.y = Double.parseDouble(loc[1]);
+					add_pts(p);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void out(String location) {
+		
 	}
 }
