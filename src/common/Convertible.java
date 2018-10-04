@@ -16,8 +16,9 @@ public interface Convertible {
 	public void read(String file);
 	
 	/**
-	 * Output the formmated file and save it to the given directory.
-	 * @param location The directory that the file will be saved
+	 * Output the formatted file and save it to the given file. If the
+	 * file does not exist, a new file will be created
+	 * @param A file that will be written, or create the new file with given path and name
 	 */
 	public void out(String location);
 	

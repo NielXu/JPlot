@@ -74,7 +74,7 @@ public class Demo {
 		config.y_max = 1;
 		config.y_min = -1;
 		Grapher g = new Grapher(config);
-		g.read("resources/jpfile.txt");		// The file that will be read
+		g.read("resources/jpfle.txt");		// The file that will be read
 											// Can be found under resources/ folder
 		return g;
 	}

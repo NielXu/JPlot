@@ -135,7 +135,19 @@ public class Grapher extends AbstractGraphTool implements Convertible{
 		}
 		return graphPanel;
 	}
-
+	
+	/**
+	 * Read the formatted file, the format should be:
+	 * <center>y=... if it is a function</center>
+	 * <center>(x,y) if it is a point</center>
+	 * A valie example will be:<br>
+	 * y=2x+1<br>
+	 * (5,10)<br>
+	 * And the Grapher will then show the function 2x+1 and point (5,10).
+	 * User can add more than one functions and points in arbitrary order,
+	 * but remember that the file should not contain blank lines and whitespaces,
+	 * each function or point should be in separate line.
+	 */
 	@Override
 	public void read(String file) {
 		try {
@@ -157,6 +169,12 @@ public class Grapher extends AbstractGraphTool implements Convertible{
 		}
 	}
 
+	/**
+	 * Write the functions and points on current graph to a .txt file, the
+	 * file format is explained in {@link #read(String)}.<br>
+	 * If the given flile does not exist, a new file with the given path and
+	 * name will be created.
+	 */
 	@Override
 	public void out(String location) {
 		StringBuilder sb = new StringBuilder();
