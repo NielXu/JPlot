@@ -1,6 +1,7 @@
 package grapher;
 
 import java.awt.Color;
+import java.io.File;
 
 import grapher.util.Expression;
 import grapher.util.InvalidPoint;
@@ -59,7 +60,7 @@ public class Demo {
 		/*
 		 * Example of reading text file and transform it to the function graph
 		 */
-		// readFileGrapher().show();
+		 readFileGrapher().show();
 		 
 		/*
 		 * Example of saving functions and points on graph to a txt file
@@ -74,7 +75,7 @@ public class Demo {
 		config.y_max = 1;
 		config.y_min = -1;
 		Grapher g = new Grapher(config);
-		g.read("resources/jpfle.txt");		// The file that will be read
+		g.read("resources/jpfile.txt");		// The file that will be read
 											// Can be found under resources/ folder
 		return g;
 	}
