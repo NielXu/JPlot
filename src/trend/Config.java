@@ -1,5 +1,5 @@
 package trend;
 
-public class Config extends histogram.Config{
+public class Config extends histogram.Config {
 
 }

@@ -8,45 +8,46 @@ import grapher.Config;
 import grapher.util.Expression;
 
 /**
- * The function component responsible for rendering the given functions. It
- * is usually on the second layer.
+ * The function component responsible for rendering the given functions. It is
+ * usually on the second layer.
+ * 
  * @author Daniel Xu
  *
  */
-public class FunctionComponent extends GraphComponent{
-	
-	/**Functions that being rendered**/
-	private List<Expression> expressions;
+public class FunctionComponent extends GraphComponent {
 
-	public FunctionComponent(Config config) {
-		super(config);
-	}
+    /** Functions that being rendered **/
+    private List<Expression> expressions;
 
-	@Override
-	public GraphComponent add_exp(List<Expression> l) {
-		this.expressions = l;
-		return this;
-	}
+    public FunctionComponent(Config config) {
+	super(config);
+    }
 
-	@Override
-	public void render(Graphics g) {
-		// Iterate and render all points, connect them with Path
-		for(int i=0;i<expressions.size();i++){
-			super.render_expression(g, expressions.get(i));
-		}
-		renderexpressions(g);
+    @Override
+    public GraphComponent add_exp(List<Expression> l) {
+	this.expressions = l;
+	return this;
+    }
+
+    @Override
+    public void render(Graphics g) {
+	// Iterate and render all points, connect them with Path
+	for (int i = 0; i < expressions.size(); i++) {
+	    super.render_expression(g, expressions.get(i));
 	}
-	
-	private void renderexpressions(Graphics g) {
-		if(config.show_expressions) {
-			for(int i=0;i<expressions.size();i++) {
-				Expression exp = expressions.get(i);
-				Color c = exp.getColor() == null? config.func_color:exp.getColor();
-				String sexp = exp.getExpression();
-				g.setColor(c);
-				g.drawString("y=" + sexp, 10, 15+i*15);
-			}
-		}
+	renderexpressions(g);
+    }
+
+    private void renderexpressions(Graphics g) {
+	if (config.show_expressions) {
+	    for (int i = 0; i < expressions.size(); i++) {
+		Expression exp = expressions.get(i);
+		Color c = exp.getColor() == null ? config.func_color : exp.getColor();
+		String sexp = exp.getExpression();
+		g.setColor(c);
+		g.drawString("y=" + sexp, 10, 15 + i * 15);
+	    }
 	}
+    }
 
 }

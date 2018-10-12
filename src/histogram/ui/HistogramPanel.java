@@ -9,12 +9,12 @@ import histogram.ui.components.CategoryComponent;
 import histogram.ui.components.LayoutComponent;
 import histogram.ui.components.SectionComponent;
 
-public class HistogramPanel extends RenderPanel{
-	
-	public HistogramPanel(Config config, List<Section> sections) {
-		super(config);
-		super.addRenderable(new LayoutComponent(config));
-		super.addRenderable(new SectionComponent(config).addSection(sections));
-		super.addRenderable(new CategoryComponent(config).addSection(sections));
-	}
+public class HistogramPanel extends RenderPanel {
+
+    public HistogramPanel(Config config, List<Section> sections) {
+	super(config);
+	super.addRenderable(new LayoutComponent(config));
+	super.addRenderable(new SectionComponent(config).addSection(sections));
+	super.addRenderable(new CategoryComponent(config).addSection(sections));
+    }
 }
